@@ -1,7 +1,7 @@
 /**
  * Original Periscope mark — not a telescope.
- * Classic optical periscope: vertical tube, bottom eyepiece,
- * top horizontal arm with objective lens (you do not look straight through).
+ * Vertical tube, side eyepiece (no overlap on shaft), top arm + objective.
+ * You do not look straight through.
  */
 export default function PeriscopeIcon({
   className = 'h-5 w-5',
@@ -22,20 +22,21 @@ export default function PeriscopeIcon({
       className={className}
       aria-hidden
     >
-      {/* Vertical main tube */}
-      <path d="M10 20V8" />
-      <path d="M14 20V8" />
-      {/* Bottom eyepiece (side-looking — you do not look straight down the tube) */}
-      <path d="M10 20h-3a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h3" />
-      <circle cx="6.5" cy="17.5" r="1.2" />
-      {/* Top bend + horizontal arm toward objective */}
-      <path d="M10 8h6" />
-      <path d="M14 8h4a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2" />
-      {/* Objective lens housing */}
-      <rect x="17" y="3" width="4" height="3" rx="0.5" />
-      {/* Suggest internal fold of light (not a straight optical path) */}
-      <path d="M12 11v2" opacity="0.5" />
-      <path d="M12 15v1" opacity="0.35" />
+      {/* Continuous vertical shaft — uninterrupted */}
+      <path d="M11 4v16" />
+      <path d="M15 4v16" />
+
+      {/* Bottom base / stand */}
+      <path d="M9 20h8" />
+
+      {/* Side eyepiece — fully to the left of the shaft, connected by a short stem only */}
+      <path d="M11 16H7" />
+      <circle cx="5" cy="16" r="2" />
+
+      {/* Top horizontal arm to the right */}
+      <path d="M15 6h4" />
+      {/* Objective lens at end of arm */}
+      <circle cx="20.5" cy="6" r="2" />
     </svg>
   )
 }
