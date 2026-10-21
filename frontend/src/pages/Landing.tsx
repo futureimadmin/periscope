@@ -8,20 +8,27 @@ import {
   ShieldCheck,
   Sparkles,
   ArrowRight,
+  Database,
 } from 'lucide-react'
 
 const benefits = [
   {
     icon: Eye,
-    title: 'See What Others Can't',
+    title: 'See Data That Cannot Be Seen Otherwise',
     description:
-      'One business unit can look through the Periscope and instantly gain visibility into partnership health, cross-team signals, and opportunities that remain hidden in silos.',
+      'One business unit can look through the Periscope and gain visibility into Partner data and other business units\' data \u2014 information that is normally locked behind silos.',
+  },
+  {
+    icon: Database,
+    title: 'Partner + Cross-BU Visibility',
+    description:
+      'Sales can see Product roadmap signals. Marketing can see Development capacity. Product can see pipeline intent. Everyone can see relevant Partner data in context.',
   },
   {
     icon: Layers,
     title: 'Formalise Without Friction',
     description:
-      'A scalable framework for formalising and managing partnerships — templates, stages, RACI, success metrics and governance that grow with you, not bureaucracy.',
+      'A scalable framework for formalising and managing partnerships \u2014 templates, stages, RACI, success metrics and governance that grow with you, not bureaucracy.',
   },
   {
     icon: Users,
@@ -33,19 +40,13 @@ const benefits = [
     icon: Sparkles,
     title: 'Gemini-Powered Insights',
     description:
-      'AI surfaces hidden opportunities, risks and blind spots that only appear when Sales + Product + Marketing data is combined. Recommendations you can act on immediately.',
+      'AI surfaces opportunities, risks and blind spots that only become visible when Partner data is combined with Sales + Product + Marketing signals.',
   },
   {
     icon: TrendingUp,
-    title: 'Accelerate Growth',
+    title: 'Accelerate Growth & Satisfaction',
     description:
-      'Link partnership activity directly to revenue impact, pipeline velocity and market-position indicators. Know which partnerships actually move the needle.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Drive Customer Satisfaction',
-    description:
-      'Partner CSAT, relationship strength and operational alignment scores stay visible. Spot at-risk relationships early and intervene before value leaks.',
+      'Link partnership activity to revenue impact, pipeline velocity, market position and Partner CSAT. Act on what was previously invisible.',
   },
 ]
 
@@ -76,16 +77,16 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-holden-100 px-4 py-1.5 text-sm font-medium text-holden-800 mb-6">
             <Telescope className="h-4 w-4" />
-            Bring the invisible into view
+            See things that cannot be seen otherwise
           </div>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal-900 max-w-3xl mx-auto leading-tight">
-            See partnerships the way they{' '}
-            <span className="text-holden-600">actually work</span>
+            Look through the Periscope and see{' '}
+            <span className="text-holden-600">Partner & cross-team data</span>
           </h1>
           <p className="mt-6 text-lg text-charcoal-600 max-w-2xl mx-auto leading-relaxed">
             Periscope is the partnership intelligence platform that lets any business unit
-            collaborate and look through a shared lens — formalising partnerships,
-            accelerating growth, and driving customer satisfaction with AI-powered clarity.
+            collaborate and gain visibility into Partner data and other business units\' data
+            \u2014 information that is normally invisible due to organisational silos.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/app" className="btn-primary text-base px-6 py-3">
@@ -107,8 +108,8 @@ export default function Landing() {
               Benefits of using Periscope
             </h2>
             <p className="mt-3 text-charcoal-600 max-w-xl mx-auto">
-              Designed for organisations that treat partnerships as a strategic growth engine,
-              not a side conversation.
+              Designed so that one team can look through the Periscope and finally see
+              Partner data and other business units\' data that was previously out of reach.
             </p>
           </div>
 
@@ -134,11 +135,12 @@ export default function Landing() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <div className="rounded-2xl bg-holden-500 px-8 py-12 text-white shadow-elevated">
             <h2 className="font-display text-2xl md:text-3xl font-bold">
-              Ready to surface what others miss?
+              Ready to see data that cannot be seen otherwise?
             </h2>
             <p className="mt-3 text-holden-100 max-w-lg mx-auto">
-              The Surface Edition brings Periscope into clear view — so every team can
-              collaborate, formalise, and act on the full partnership picture.
+              The Surface Edition brings Periscope into clear view \u2014 so any business unit
+              can look through it and access Partner data and cross-team signals that were
+              previously invisible.
             </p>
             <Link
               to="/app"
@@ -152,7 +154,7 @@ export default function Landing() {
       </section>
 
       <footer className="border-t border-charcoal-100 py-8 text-center text-sm text-charcoal-500">
-        Periscope · Surface Edition · intelligentmachines · Powered by Gemini
+        Periscope \u00b7 Surface Edition \u00b7 intelligentmachines \u00b7 Powered by Gemini
       </footer>
     </div>
   )
