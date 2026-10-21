@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import {
-  Telescope,
   Eye,
   Layers,
   Users,
@@ -9,6 +8,7 @@ import {
   ArrowRight,
   Database,
 } from 'lucide-react'
+import PeriscopeIcon from '../components/PeriscopeIcon'
 
 const benefits = [
   {
@@ -52,12 +52,11 @@ const benefits = [
 export default function Landing() {
   return (
     <div className="min-h-screen bg-cream-50">
-      {/* Nav */}
       <header className="border-b border-charcoal-100 bg-white/90 backdrop-blur sticky top-0 z-50">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
-              <Telescope className="h-5 w-5" strokeWidth={2.2} />
+              <PeriscopeIcon className="h-5 w-5" strokeWidth={2.2} />
             </div>
             <span className="font-display text-lg font-bold text-charcoal-900">Periscope</span>
             <span className="ml-2 rounded-full bg-gold-100 px-2.5 py-0.5 text-xs font-medium text-gold-800">
@@ -71,11 +70,10 @@ export default function Landing() {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-gold-100 px-4 py-1.5 text-sm font-medium text-gold-800 mb-6">
-            <Telescope className="h-4 w-4" />
+            <PeriscopeIcon className="h-4 w-4" />
             See things that cannot be seen otherwise
           </div>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal-900 max-w-3xl mx-auto leading-tight">
@@ -99,7 +97,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Benefits */}
       <section id="benefits" className="py-20 bg-white border-y border-charcoal-100">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center mb-14">
@@ -129,7 +126,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <div className="rounded-2xl bg-gold-400 px-8 py-12 text-charcoal-900 shadow-elevated">
