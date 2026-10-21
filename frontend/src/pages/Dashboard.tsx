@@ -1,84 +1,210 @@
-import { TrendingUp, Users, Target, Heart } from 'lucide-react'
+import {
+  Users,
+  TrendingUp,
+  Star,
+  Shield,
+  ArrowUpRight,
+  Sparkles,
+} from 'lucide-react'
 
-const stats = [
-  { label: 'Active Partnerships', value: '24', change: '+3 this quarter', icon: Users, color: 'text-gold-400' },
-  { label: 'Growth Impact', value: '+18%', change: 'YoY revenue attribution', icon: TrendingUp, color: 'text-emerald-400' },
-  { label: 'Market Position', value: 'Top 3', change: 'in target segment', icon: Target, color: 'text-sky-400' },
-  { label: 'Partner CSAT', value: '4.6', change: '↑ 0.3 vs last half', icon: Heart, color: 'text-rose-400' },
+const metrics = [
+  {
+    label: 'Active Partnerships',
+    value: '48',
+    change: '+12% vs last month',
+    icon: Users,
+    trend: 'up',
+  },
+  {
+    label: 'Growth Pipeline',
+    value: '+23%',
+    change: '+8% vs last month',
+    icon: TrendingUp,
+    trend: 'up',
+  },
+  {
+    label: 'Partner CSAT',
+    value: '92',
+    change: '+5 pts vs last quarter',
+    icon: Star,
+    trend: 'up',
+  },
+  {
+    label: 'Cross-team Health',
+    value: '87',
+    change: '+7 pts vs last month',
+    icon: Shield,
+    trend: 'up',
+  },
 ]
+
+const heatmap = [
+  { dim: 'Strategic Fit', product: 82, growth: 76, enterprise: 91, platform: 68 },
+  { dim: 'Value & Impact', product: 74, growth: 88, enterprise: 79, platform: 71 },
+  { dim: 'Relationship Strength', product: 90, growth: 85, enterprise: 93, platform: 77 },
+  { dim: 'Operational Alignment', product: 69, growth: 73, enterprise: 84, platform: 88 },
+]
+
+const opportunities = [
+  { title: 'Expand with Northbeam', desc: 'High synergy in data infrastructure.', score: 92, tag: 'High Impact' },
+  { title: 'Co-build with Vertex', desc: 'Joint solution opportunity identified.', score: 87, tag: 'Strategic' },
+  { title: 'Deepen with Ladder', desc: 'Cross-sell potential across teams.', score: 75, tag: 'Growth' },
+]
+
+const insights = [
+  { title: 'Pipeline acceleration', body: 'Your growth pipeline is strongest in Enterprise and Platform. Consider doubling down on mid-market expansion.' },
+  { title: 'Health opportunity', body: '3 partnerships show early signs of risk. Review relationship plans in the next 7 days.' },
+  { title: 'Untapped potential', body: '6 partners have high strategic fit but low engagement. AI suggests re-engagement plays.' },
+]
+
+function scoreColor(score: number) {
+  if (score >= 85) return 'bg-holden-500 text-white'
+  if (score >= 70) return 'bg-holden-200 text-holden-900'
+  return 'bg-cream-200 text-charcoal-700'
+}
 
 export default function Dashboard() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="font-display text-2xl font-bold text-charcoal-50">Dashboard</h2>
-        <p className="mt-1 text-charcoal-300">
-          Partnership health, growth signals and customer satisfaction at a glance.
-        </p>
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="font-display text-2xl font-bold text-charcoal-900">Periscope View</h1>
+          <p className="mt-1 text-charcoal-500">Real-time visibility. Smarter partnerships.</p>
+        </div>
+        {/* Circular radar motif */}
+        <div className="hidden lg:flex h-28 w-28 items-center justify-center rounded-full border-4 border-holden-200 bg-holden-50 relative">
+          <div className="absolute inset-3 rounded-full border-2 border-holden-300 opacity-60" />
+          <div className="absolute inset-6 rounded-full border border-holden-400 opacity-40" />
+          <div className="h-4 w-4 rounded-full bg-holden-500 shadow-lg" />
+          <span className="absolute -bottom-5 text-[10px] font-medium text-holden-700 uppercase tracking-wider">
+            Ecosystem
+          </span>
+        </div>
       </div>
 
+      {/* Metrics */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((s) => (
-          <div key={s.label} className="card">
+        {metrics.map((m) => (
+          <div key={m.label} className="card">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm text-charcoal-300">{s.label}</p>
-                <p className="mt-1 text-3xl font-bold tracking-tight">{s.value}</p>
-                <p className="mt-1 text-xs text-charcoal-400">{s.change}</p>
+                <p className="text-sm text-charcoal-500">{m.label}</p>
+                <p className="mt-1 text-3xl font-bold tracking-tight text-charcoal-900">{m.value}</p>
+                <p className="mt-1 flex items-center gap-1 text-xs text-holden-700">
+                  <ArrowUpRight className="h-3 w-3" />
+                  {m.change}
+                </p>
               </div>
-              <s.icon className={`h-6 w-6 ${s.color}`} />
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-holden-50 text-holden-600">
+                <m.icon className="h-5 w-5" />
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="card">
-          <h3 className="font-display text-lg font-semibold text-gold-400">Recent Periscope Insights</h3>
-          <ul className="mt-4 space-y-3 text-sm text-charcoal-200">
-            <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-              Sales visibility into Product roadmap gaps reduced deal cycle time by 12 days on average.
-            </li>
-            <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-              Marketing + Development joint campaign framework recommended for Q4 launch partners.
-            </li>
-            <li className="flex gap-3">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-              Three high-value partners flagged as "at risk" — proactive outreach suggested.
-            </li>
-          </ul>
+      {/* Main grid */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        {/* Heatmap */}
+        <div className="card lg:col-span-1">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-display font-semibold text-charcoal-900">Partnership Health Heatmap</h2>
+            <span className="text-xs text-charcoal-400">by strategic dimension</span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-left text-xs text-charcoal-500">
+                  <th className="pb-2 font-medium">Dimension</th>
+                  <th className="pb-2 font-medium text-center">Product</th>
+                  <th className="pb-2 font-medium text-center">Growth</th>
+                  <th className="pb-2 font-medium text-center">Ent.</th>
+                  <th className="pb-2 font-medium text-center">Plat.</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-charcoal-50">
+                {heatmap.map((row) => (
+                  <tr key={row.dim}>
+                    <td className="py-2.5 text-charcoal-700 font-medium">{row.dim}</td>
+                    {[row.product, row.growth, row.enterprise, row.platform].map((v, i) => (
+                      <td key={i} className="py-2.5 text-center">
+                        <span className={`inline-flex h-8 w-10 items-center justify-center rounded text-xs font-semibold ${scoreColor(v)}`}>
+                          {v}%
+                        </span>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-3 flex items-center gap-2 text-xs text-charcoal-400">
+            <span className="h-2.5 w-2.5 rounded-sm bg-cream-200" /> Lower
+            <span className="h-2.5 w-2.5 rounded-sm bg-holden-200" /> Mid
+            <span className="h-2.5 w-2.5 rounded-sm bg-holden-500" /> Higher Health
+          </div>
         </div>
 
-        <div className="card">
-          <h3 className="font-display text-lg font-semibold text-gold-400">Partnership Framework Status</h3>
-          <div className="mt-4 space-y-4">
-            <div>
-              <div className="flex justify-between text-sm">
-                <span>Formalized partnerships</span>
-                <span className="text-gold-400">68%</span>
-              </div>
-              <div className="mt-1 h-2 rounded-full bg-charcoal-700">
-                <div className="h-2 rounded-full bg-gold-400" style={{ width: '68%' }} />
-              </div>
-            </div>
-            <div>
-              <div className="flex justify-between text-sm">
-                <span>Cross-team visibility coverage</span>
-                <span className="text-gold-400">82%</span>
-              </div>
-              <div className="mt-1 h-2 rounded-full bg-charcoal-700">
-                <div className="h-2 rounded-full bg-gold-400" style={{ width: '82%' }} />
-              </div>
-            </div>
-            <div>
-              <div className="flex justify-between text-sm">
-                <span>AI-assisted reviews this month</span>
-                <span className="text-gold-400">41</span>
-              </div>
-            </div>
+        {/* AI Opportunities */}
+        <div className="card lg:col-span-1">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-display font-semibold text-charcoal-900">AI-generated Opportunities</h2>
+            <span className="text-xs text-holden-600 font-medium">Powered by Periscope AI</span>
           </div>
+          <ul className="space-y-3">
+            {opportunities.map((o) => (
+              <li key={o.title} className="rounded-lg border border-charcoal-100 p-3 hover:border-holden-200 transition">
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <p className="font-medium text-charcoal-900 text-sm">{o.title}</p>
+                    <p className="text-xs text-charcoal-500 mt-0.5">{o.desc}</p>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-holden-50 px-2 py-0.5 text-xs font-semibold text-holden-700">
+                    {o.score}
+                  </span>
+                </div>
+                <span className="mt-2 inline-block text-[10px] uppercase tracking-wider text-charcoal-400 font-medium">
+                  {o.tag}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <button className="mt-4 w-full text-sm font-medium text-holden-600 hover:text-holden-700 flex items-center justify-center gap-1">
+            View all opportunities <ArrowUpRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
+
+        {/* Gemini Insights */}
+        <div className="card lg:col-span-1">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-display font-semibold text-charcoal-900 flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-holden-500" />
+              Gemini Insights
+            </h2>
+            <span className="text-xs text-charcoal-400">Updated just now</span>
+          </div>
+          <ul className="space-y-4">
+            {insights.map((ins) => (
+              <li key={ins.title} className="border-l-2 border-holden-300 pl-3">
+                <p className="text-sm font-medium text-charcoal-900">{ins.title}</p>
+                <p className="mt-1 text-xs text-charcoal-600 leading-relaxed">{ins.body}</p>
+              </li>
+            ))}
+          </ul>
+          <button className="mt-5 btn-primary w-full text-sm">
+            <Sparkles className="h-4 w-4" />
+            Ask Gemini
+          </button>
+        </div>
+      </div>
+
+      {/* Live lens indicator */}
+      <div className="card flex items-center gap-3 bg-holden-50 border-holden-100">
+        <div className="h-2.5 w-2.5 rounded-full bg-holden-500 animate-pulse" />
+        <div>
+          <p className="text-sm font-medium text-charcoal-900">Periscope Lens</p>
+          <p className="text-xs text-charcoal-600">Scanning the partnership ecosystem live.</p>
         </div>
       </div>
     </div>
