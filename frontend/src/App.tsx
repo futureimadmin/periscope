@@ -7,8 +7,8 @@ import {
   Layers,
   Sparkles,
   Settings,
-  Telescope,
 } from 'lucide-react'
+import PeriscopeIcon from './components/PeriscopeIcon'
 import Dashboard from './pages/Dashboard'
 import PeriscopeView from './pages/PeriscopeView'
 import Collaboration from './pages/Collaboration'
@@ -32,7 +32,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
       <aside className="w-60 shrink-0 border-r border-charcoal-100 bg-white flex flex-col">
         <div className="flex items-center gap-3 px-5 h-16 border-b border-charcoal-100">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
-            <Telescope className="h-5 w-5" strokeWidth={2.2} />
+            <PeriscopeIcon className="h-5 w-5" strokeWidth={2.2} />
           </div>
           <div>
             <h1 className="font-display text-base font-bold text-charcoal-900 tracking-tight">
