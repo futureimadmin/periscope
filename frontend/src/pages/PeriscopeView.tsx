@@ -100,7 +100,7 @@ export default function PeriscopeView() {
     <div className="space-y-8">
       <div>
         <h1 className="font-display text-2xl font-bold text-charcoal-900 flex items-center gap-2">
-          <PeriscopeIcon className="h-8 w-8" />
+          <PeriscopeIcon className="h-9 w-9" />
           Periscope View
         </h1>
         <p className="mt-1 text-charcoal-500 max-w-2xl">
@@ -139,11 +139,9 @@ export default function PeriscopeView() {
             </div>
           </div>
 
-          {/* Periscope mark in the middle */}
+          {/* Full round image fills the lens — no yellow ring behind it */}
           <div className="flex flex-col items-center justify-center gap-2 py-2">
-            <div className="relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-gold-300 bg-white shadow-elevated overflow-hidden">
-              <PeriscopeIcon className="h-14 w-14 relative z-10" />
-            </div>
+            <PeriscopeIcon className="h-20 w-20 shadow-elevated" />
             <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-700">
               Periscope
             </span>
