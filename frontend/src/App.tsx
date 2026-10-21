@@ -31,9 +31,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex bg-cream-100">
       <aside className="w-60 shrink-0 border-r border-charcoal-100 bg-white flex flex-col">
         <div className="flex items-center gap-3 px-5 h-16 border-b border-charcoal-100">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
-            <PeriscopeIcon className="h-5 w-5" strokeWidth={2.2} />
-          </div>
+          <PeriscopeIcon className="h-9 w-9 shrink-0" />
           <div>
             <h1 className="font-display text-base font-bold text-charcoal-900 tracking-tight">
               Periscope
