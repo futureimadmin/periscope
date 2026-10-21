@@ -1,9 +1,9 @@
 # Periscope — Surface Edition
 
-> **See what others can't.**  
-> The Surface Edition brings Periscope into clear view so every business unit can collaborate and look through a shared lens.
+> **See things that cannot be seen otherwise.**  
+> One business unit can look through the Periscope and gain visibility into **Partner data** and **other business units’ data** — information that is normally invisible due to organisational silos.
 
-Periscope is a scalable partnership collaboration platform that enables Sales, Marketing, Product, and Development teams to formalize, manage, and gain deep visibility into partnerships. One team can look through the Periscope and see the full picture that would otherwise remain hidden.
+Periscope is a scalable partnership collaboration platform that enables Sales, Marketing, Product, and Development teams to formalize, manage, and gain deep visibility into partnerships. The core value is simple: data and signals that cannot be seen otherwise become visible when you look through the Periscope.
 
 **Branch strategy**  
 - `main` — clean, stable baseline  
@@ -11,18 +11,18 @@ Periscope is a scalable partnership collaboration platform that enables Sales, M
 
 ## Benefits of using Periscope
 
-- **See What Others Can't** — One business unit looks through the Periscope and instantly gains visibility into partnership health, cross-team signals, and opportunities hidden in silos.
-- **Formalise Without Friction** — Scalable framework with templates, stages, RACI, success metrics and governance that grow with you.
-- **True Cross-Team Collaboration** — Shared partnership canvas for Sales, Marketing, Product and Development. Raise signals, log decisions, stay aligned.
-- **Gemini-Powered Insights** — AI surfaces hidden opportunities, risks and blind spots that only appear when data is combined across teams.
-- **Accelerate Growth** — Link partnership activity to revenue impact, pipeline velocity and market-position indicators.
-- **Drive Customer Satisfaction** — Partner CSAT, relationship strength and operational alignment stay visible so you can intervene early.
+- **See Data That Cannot Be Seen Otherwise** — One business unit looks through the Periscope and gains visibility into Partner data and other business units’ data that is normally locked behind silos.
+- **Partner + Cross-BU Visibility** — Sales can see Product signals. Marketing can see Development capacity. Product can see pipeline intent. Everyone can see relevant Partner data in context.
+- **Formalise Without Friction** — Scalable framework with templates, stages, RACI, success metrics and governance.
+- **True Cross-Team Collaboration** — Shared partnership canvas for Sales, Marketing, Product and Development.
+- **Gemini-Powered Insights** — AI surfaces opportunities and risks that only become visible when Partner data is combined with cross-team signals.
+- **Accelerate Growth & Satisfaction** — Link partnership activity to revenue, pipeline velocity, market position and Partner CSAT.
 
 ## Core Screens (Surface Edition)
 
 | Screen | Purpose |
 |--------|---------|
-| **Landing** | Benefits-focused index page explaining why Periscope matters |
+| **Landing** | Explains the core value: visibility into Partner & other BU data that cannot be seen otherwise |
 | **Periscope View (Dashboard)** | Real-time metrics, health heatmap, AI opportunities, Gemini insights |
 | **Framework Builder** | Design and publish partnership frameworks with stage templates and AI assist |
 | **Partnerships** | Manage formalized and emerging partnerships across teams |
@@ -83,5 +83,5 @@ All AI calls use Application Default Credentials. Locally: `gcloud auth applicat
 
 ---
 
-**Surface Edition** — bringing Periscope to the surface so teams can see things that cannot be seen otherwise.  
+**Surface Edition** — bringing Periscope to the surface so any business unit can see Partner data and other business units’ data that cannot be seen otherwise.  
 Built for intelligentmachines · Powered by Gemini
