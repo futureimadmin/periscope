@@ -55,9 +55,7 @@ export default function Landing() {
       <header className="border-b border-charcoal-100 bg-white/90 backdrop-blur sticky top-0 z-50">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
-              <PeriscopeIcon className="h-5 w-5" strokeWidth={2.2} />
-            </div>
+            <PeriscopeIcon className="h-9 w-9 shrink-0" />
             <span className="font-display text-lg font-bold text-charcoal-900">Periscope</span>
             <span className="ml-2 rounded-full bg-gold-100 px-2.5 py-0.5 text-xs font-medium text-gold-800">
               Surface Edition
@@ -72,8 +70,8 @@ export default function Landing() {
 
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-gold-100 px-4 py-1.5 text-sm font-medium text-gold-800 mb-6">
-            <PeriscopeIcon className="h-4 w-4" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-cream-100 border border-charcoal-100 px-4 py-1.5 text-sm font-medium text-charcoal-800 mb-6">
+            <PeriscopeIcon className="h-5 w-5" />
             See things that cannot be seen otherwise
           </div>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal-900 max-w-3xl mx-auto leading-tight">
