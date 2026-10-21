@@ -1,31 +1,34 @@
 import { Routes, Route, NavLink } from 'react-router-dom'
 import {
   LayoutDashboard,
+  Eye,
+  MessageSquare,
   Handshake,
   Layers,
-  Users,
   Sparkles,
   Settings,
   Telescope,
 } from 'lucide-react'
 import Dashboard from './pages/Dashboard'
+import PeriscopeView from './pages/PeriscopeView'
+import Collaboration from './pages/Collaboration'
 import Partnerships from './pages/Partnerships'
 import Framework from './pages/Framework'
 import Insights from './pages/Insights'
 import Landing from './pages/Landing'
 
 const nav = [
-  { to: '/app', label: 'Dashboard', icon: LayoutDashboard, end: true },
+  { to: '/app', label: 'Command Centre', icon: LayoutDashboard, end: true },
+  { to: '/app/periscope', label: 'Periscope View', icon: Eye },
+  { to: '/app/collaboration', label: 'Collaboration Spaces', icon: MessageSquare },
   { to: '/app/partnerships', label: 'Partnerships', icon: Handshake },
   { to: '/app/framework', label: 'Framework', icon: Layers },
-  { to: '/app/teams', label: 'Teams', icon: Users },
   { to: '/app/insights', label: 'Insights', icon: Sparkles },
 ]
 
 function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex bg-cream-100">
-      {/* Sidebar */}
       <aside className="w-60 shrink-0 border-r border-charcoal-100 bg-white flex flex-col">
         <div className="flex items-center gap-3 px-5 h-16 border-b border-charcoal-100">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
@@ -53,55 +56,43 @@ function AppShell({ children }: { children: React.ReactNode }) {
                 }`
               }
             >
-              <Icon className="h-4.5 w-4.5" strokeWidth={2} />
+              <Icon className="h-4 w-4" strokeWidth={2} />
               {label}
             </NavLink>
           ))}
         </nav>
 
         <div className="px-3 py-4 border-t border-charcoal-100">
-          <NavLink
-            to="/app/settings"
-            className="sidebar-link sidebar-link-inactive"
-          >
-            <Settings className="h-4.5 w-4.5" />
+          <NavLink to="/app/settings" className="sidebar-link sidebar-link-inactive">
+            <Settings className="h-4 w-4" />
             Settings
           </NavLink>
         </div>
       </aside>
 
-      {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-16 border-b border-charcoal-100 bg-white/80 backdrop-blur sticky top-0 z-40 flex items-center justify-between px-6">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <input
-                type="search"
-                placeholder="Search partnerships, teams, opportunities..."
-                className="w-80 rounded-lg border border-charcoal-200 bg-cream-50 pl-10 pr-4 py-2 text-sm focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400"
+          <div className="relative">
+            <input
+              type="search"
+              placeholder="Search partnerships, teams, opportunities..."
+              className="w-80 rounded-lg border border-charcoal-200 bg-cream-50 pl-10 pr-4 py-2 text-sm focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400"
+            />
+            <svg
+              className="absolute left-3 top-2.5 h-4 w-4 text-charcoal-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
-              <svg
-                className="absolute left-3 top-2.5 h-4 w-4 text-charcoal-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
+            </svg>
           </div>
           <div className="flex items-center gap-4">
-            <button className="relative p-2 text-charcoal-500 hover:text-charcoal-800">
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-gold-400" />
-            </button>
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-gold-100 flex items-center justify-center text-gold-800 font-semibold text-sm">
                 AM
@@ -130,10 +121,11 @@ export default function App() {
           <AppShell>
             <Routes>
               <Route index element={<Dashboard />} />
+              <Route path="periscope" element={<PeriscopeView />} />
+              <Route path="collaboration" element={<Collaboration />} />
               <Route path="partnerships" element={<Partnerships />} />
               <Route path="framework" element={<Framework />} />
               <Route path="insights" element={<Insights />} />
-              <Route path="teams" element={<Dashboard />} />
               <Route path="settings" element={<Dashboard />} />
             </Routes>
           </AppShell>
