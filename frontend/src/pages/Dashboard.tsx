@@ -70,7 +70,9 @@ export default function Dashboard() {
       <div className="flex items-start justify-between">
         <div>
           <h1 className="font-display text-2xl font-bold text-charcoal-900">Periscope View</h1>
-          <p className="mt-1 text-charcoal-500">Real-time visibility. Smarter partnerships.</p>
+          <p className="mt-1 text-charcoal-500">
+            See Partner data and other business units' data that cannot be seen otherwise.
+          </p>
         </div>
         {/* Circular radar motif */}
         <div className="hidden lg:flex h-28 w-28 items-center justify-center rounded-full border-4 border-holden-200 bg-holden-50 relative">
@@ -204,7 +206,7 @@ export default function Dashboard() {
         <div className="h-2.5 w-2.5 rounded-full bg-holden-500 animate-pulse" />
         <div>
           <p className="text-sm font-medium text-charcoal-900">Periscope Lens</p>
-          <p className="text-xs text-charcoal-600">Scanning the partnership ecosystem live.</p>
+          <p className="text-xs text-charcoal-600">Scanning Partner data and cross-team signals live.</p>
         </div>
       </div>
     </div>
