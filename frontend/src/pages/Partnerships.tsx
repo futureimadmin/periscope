@@ -40,7 +40,7 @@ const samplePartnerships = [
 ]
 
 function healthBadge(score: number) {
-  if (score >= 80) return 'bg-holden-100 text-holden-800'
+  if (score >= 80) return 'bg-gold-100 text-gold-800'
   if (score >= 60) return 'bg-amber-50 text-amber-800'
   return 'bg-rose-50 text-rose-700'
 }
@@ -56,7 +56,7 @@ export default function Partnerships() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-display text-2xl font-bold text-charcoal-900 flex items-center gap-2">
-            <Handshake className="h-6 w-6 text-holden-500" />
+            <Handshake className="h-6 w-6 text-gold-500" />
             Partnerships
           </h1>
           <p className="mt-1 text-charcoal-500">
@@ -123,7 +123,7 @@ export default function Partnerships() {
                 </td>
                 <td className="px-5 py-4 text-sm text-charcoal-500">{p.lastReview}</td>
                 <td className="px-5 py-4 text-right">
-                  <button className="text-holden-600 hover:text-holden-700">
+                  <button className="text-gold-700 hover:text-gold-800">
                     <ExternalLink className="h-4 w-4" />
                   </button>
                 </td>
