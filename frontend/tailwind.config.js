@@ -7,19 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Holden Yellow inspired palette (light theme)
-        holden: {
-          DEFAULT: "#F5A600",
-          50: "#FFF8E7",
-          100: "#FFF3D1",
-          200: "#FFE8A3",
-          300: "#FFD966",
-          400: "#FFC107",
-          500: "#F5A600",
-          600: "#E69500",
-          700: "#CC8400",
-          800: "#A36A00",
-          900: "#7A4F00",
+        // Golden Yellow palette (light theme)
+        gold: {
+          DEFAULT: "#FFDF00",
+          50: "#FFFEF0",
+          100: "#FFFAD1",
+          200: "#FFF299",
+          300: "#FFE85C",
+          400: "#FFDF00",
+          500: "#E6C700",
+          600: "#CCB200",
+          700: "#998500",
+          800: "#665900",
+          900: "#332C00",
         },
         cream: {
           DEFAULT: "#FFF8E7",
