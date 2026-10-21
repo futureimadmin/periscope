@@ -28,14 +28,14 @@ function AppShell({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className="w-60 shrink-0 border-r border-charcoal-100 bg-white flex flex-col">
         <div className="flex items-center gap-3 px-5 h-16 border-b border-charcoal-100">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-holden-500 text-white">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
             <Telescope className="h-5 w-5" strokeWidth={2.2} />
           </div>
           <div>
             <h1 className="font-display text-base font-bold text-charcoal-900 tracking-tight">
               Periscope
             </h1>
-            <p className="text-[10px] uppercase tracking-wider text-holden-600 font-medium">
+            <p className="text-[10px] uppercase tracking-wider text-gold-700 font-medium">
               Surface Edition
             </p>
           </div>
@@ -78,7 +78,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
               <input
                 type="search"
                 placeholder="Search partnerships, teams, opportunities..."
-                className="w-80 rounded-lg border border-charcoal-200 bg-cream-50 pl-10 pr-4 py-2 text-sm focus:border-holden-400 focus:outline-none focus:ring-1 focus:ring-holden-400"
+                className="w-80 rounded-lg border border-charcoal-200 bg-cream-50 pl-10 pr-4 py-2 text-sm focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400"
               />
               <svg
                 className="absolute left-3 top-2.5 h-4 w-4 text-charcoal-400"
@@ -100,10 +100,10 @@ function AppShell({ children }: { children: React.ReactNode }) {
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-holden-500" />
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-gold-400" />
             </button>
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-holden-100 flex items-center justify-center text-holden-700 font-semibold text-sm">
+              <div className="h-8 w-8 rounded-full bg-gold-100 flex items-center justify-center text-gold-800 font-semibold text-sm">
                 AM
               </div>
               <div className="hidden sm:block text-sm">
