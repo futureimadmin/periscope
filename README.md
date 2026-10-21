@@ -1,4 +1,4 @@
-# Periscope — Surface Edition
+# Periscope \u2014 Surface Edition
 
 > **See things that cannot be seen otherwise.**
 
@@ -7,7 +7,7 @@
 Periscope is a partnership intelligence platform that allows **one business unit to look through a shared lens** and gain visibility into:
 
 - **Partner data** (information that partners hold or generate)
-- **Other business units’ data** (Sales, Marketing, Product, Development signals)
+- **Other business units\u2019 data** (Sales, Marketing, Product, Development signals)
 
 This is data that is **normally invisible** because of organisational silos.  
 Looking through the Periscope makes it visible.
@@ -33,21 +33,21 @@ With Periscope:
 
 ## Benefits of using Periscope
 
-- **See Data That Cannot Be Seen Otherwise** — Partner data and other business units’ data become visible through a single lens.
-- **Partner + Cross-BU Visibility** — Sales sees Product signals. Marketing sees Development capacity. Product sees pipeline intent. Everyone sees relevant Partner data.
-- **Formalise Without Friction** — Scalable framework with templates, stages, RACI, success metrics and governance.
-- **True Cross-Team Collaboration** — Shared partnership canvas for Sales, Marketing, Product and Development.
-- **Gemini-Powered Insights** — AI surfaces opportunities and risks that only appear when Partner data is combined with cross-team signals.
-- **Accelerate Growth & Satisfaction** — Link partnership activity to revenue, pipeline velocity, market position and Partner CSAT.
+- **See Data That Cannot Be Seen Otherwise** \u2014 Partner data and other business units\u2019 data become visible through a single lens.
+- **Partner + Cross-BU Visibility** \u2014 Sales sees Product signals. Marketing sees Development capacity. Product sees pipeline intent. Everyone sees relevant Partner data.
+- **Formalise Without Friction** \u2014 Scalable framework with templates, stages, RACI, success metrics and governance.
+- **True Cross-Team Collaboration** \u2014 Shared partnership canvas for Sales, Marketing, Product and Development.
+- **Gemini-Powered Insights** \u2014 AI surfaces opportunities and risks that only appear when Partner data is combined with cross-team signals.
+- **Accelerate Growth & Satisfaction** \u2014 Link partnership activity to revenue, pipeline velocity, market position and Partner CSAT.
 
 ---
 
 ## Branch Strategy
 
-- `main` — clean, stable baseline
-- `surface` — **Surface Edition**: polished UI matching the product prototypes, light Holden Yellow theme, full feature screens
+- `main` \u2014 clean, stable baseline
+- `surface` \u2014 **Surface Edition**: polished UI matching the product prototypes, light Golden Yellow theme, full feature screens
 
-The Surface Edition represents bringing Periscope to the surface so teams can finally see Partner data and other business units’ data that cannot be seen otherwise.
+The Surface Edition represents bringing Periscope to the surface so teams can finally see Partner data and other business units\u2019 data that cannot be seen otherwise.
 
 ---
 
@@ -68,16 +68,16 @@ The Surface Edition represents bringing Periscope to the surface so teams can fi
 | Layer | Technology |
 |-------|------------|
 | Frontend | React + Vite + Tailwind CSS |
-| Theme | **Holden Yellow** light theme (`#F5A600` primary, cream backgrounds) |
+| Theme | **Golden Yellow** light theme (`#FFDF00` primary, cream backgrounds) |
 | Backend | Google Cloud Functions (Python 3.12) |
 | AI | Gemini via Application Default Credentials (ADC) |
 | GCP Project | `intelligentmachines` |
 
 ---
 
-## Theme — Holden Yellow (Surface)
+## Theme \u2014 Golden Yellow (Surface)
 
-- Primary: `#F5A600` / `#FFC107`
+- Primary: `#FFDF00` (Golden Yellow)
 - Cream background: `#FFF8E7`
 - Charcoal text/surfaces for contrast
 - Clean, airy SaaS aesthetic matching the product prototypes
@@ -125,6 +125,6 @@ Locally run: `gcloud auth application-default login`.
 
 ---
 
-**Surface Edition** — bringing Periscope to the surface so any business unit can see Partner data and other business units’ data that cannot be seen otherwise.  
+**Surface Edition** \u2014 bringing Periscope to the surface so any business unit can see Partner data and other business units\u2019 data that cannot be seen otherwise.  
 
-Built for intelligentmachines · Powered by Gemini
+Built for intelligentmachines \u00b7 Powered by Gemini
