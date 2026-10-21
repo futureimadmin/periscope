@@ -1,20 +1,21 @@
 /**
- * Brand mark from public/periscope.svg — use this everywhere instead of inline SVGs or Telescope.
+ * Brand mark from public/periscope.svg.
+ * Round image fills the container — no extra yellow circle behind it.
  */
 export default function PeriscopeIcon({
-  className = 'h-5 w-5',
+  className = 'h-9 w-9',
   alt = 'Periscope',
 }: {
   className?: string
   alt?: string
-  /** @deprecated ignored — asset is the public SVG */
+  /** @deprecated ignored */
   strokeWidth?: number
 }) {
   return (
     <img
       src="/periscope.svg"
       alt={alt}
-      className={className}
+      className={`rounded-full object-cover ${className}`}
       draggable={false}
     />
   )
