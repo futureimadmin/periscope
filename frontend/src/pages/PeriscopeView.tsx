@@ -1,169 +1,247 @@
 import { useState } from 'react'
-import { Eye, Loader2, Sparkles } from 'lucide-react'
+import {
+  Eye,
+  ArrowRight,
+  Sparkles,
+  Loader2,
+  Building2,
+  Users,
+} from 'lucide-react'
 
-const teams = ['Sales', 'Marketing', 'Product', 'Development']
+const teams = ['Sales', 'Marketing', 'Product', 'Development'] as const
+
+const lookingIntoOptions = [
+  { id: 'partner-data', label: 'Partner data', desc: 'Partner health, engagement, CSAT, pipeline contribution' },
+  { id: 'sales', label: 'Sales data', desc: 'Pipeline, deals, blockers, capacity signals' },
+  { id: 'marketing', label: 'Marketing data', desc: 'Campaigns, content gaps, demand signals' },
+  { id: 'product', label: 'Product data', desc: 'Roadmap, capacity, open requests' },
+  { id: 'development', label: 'Development data', desc: 'Sprint health, integrations, tech debt' },
+]
+
+const sampleVisibility: Record<string, { headline: string; signals: string[]; gaps: string[] }> = {
+  'partner-data': {
+    headline: 'Partner signals that are normally locked in partner systems and account teams.',
+    signals: [
+      'Acme Corp CSAT dipped 8 pts after last integration delay',
+      'Northbeam increased joint pipeline 23% QoQ',
+      '3 partners flagged low engagement but high strategic fit',
+    ],
+    gaps: [
+      'No shared view of partner success plans across Sales and Product',
+      'Partner roadmap commitments not visible to Development',
+    ],
+  },
+  sales: {
+    headline: 'Sales pipeline and constraints that other units rarely see in full.',
+    signals: [
+      'Top deals blocked on missing Product roadmap clarity',
+      '$4.2M pipeline with capacity constraints in Q4',
+      'Competitive intelligence requests stacking up',
+    ],
+    gaps: [
+      'Product cannot see early intent signals from open deals',
+      'Marketing cannot see which partners drive pipeline',
+    ],
+  },
+  marketing: {
+    headline: 'Campaign and demand data that sits outside other teams\' day-to-day view.',
+    signals: [
+      'Partner co-marketing Q4 needs technical assets from Development',
+      'Webinar series driving mid-market interest',
+      'Budget on track; content gaps on integrations',
+    ],
+    gaps: [
+      'Sales cannot see campaign attribution by partner',
+      'Product cannot see demand themes from campaigns',
+    ],
+  },
+  product: {
+    headline: 'Roadmap and capacity signals that Sales and Marketing usually lack.',
+    signals: [
+      'AI insights module and Partner portal v2 in focus',
+      '80% capacity already allocated',
+      'Open request: competitive intelligence feature from Sales',
+    ],
+    gaps: [
+      'Sales cannot see which features land this quarter',
+      'Development capacity not reflected in partner commitments',
+    ],
+  },
+  development: {
+    headline: 'Engineering reality that partner and GTM teams cannot see otherwise.',
+    signals: [
+      'Sprint health: Yellow; limited room for new work',
+      'Salesforce connector in progress',
+      'Tech debt moderate; partner integrations competing for slots',
+    ],
+    gaps: [
+      'Partner SLAs set without visibility into sprint load',
+      'Marketing launch dates not aligned to integration readiness',
+    ],
+  },
+}
 
 export default function PeriscopeView() {
-  const [requestingTeam, setRequestingTeam] = useState('Product')
+  const [lookingFrom, setLookingFrom] = useState<string>('Product')
+  const [lookingInto, setLookingInto] = useState<string>('partner-data')
   const [loading, setLoading] = useState(false)
-  const [result, setResult] = useState<any>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [revealed, setRevealed] = useState(false)
 
-  async function lookThroughPeriscope() {
+  async function look() {
     setLoading(true)
-    setError(null)
-    setResult(null)
-
-    // Sample teams data — in production this comes from Firestore / internal systems
-    const teamsData = {
-      Sales: {
-        pipeline: '$4.2M',
-        top_deals: ['Acme Corp expansion', 'Globex new logo'],
-        blockers: ['Missing product roadmap clarity for Q1 features'],
-        sentiment: 'Optimistic but capacity-constrained',
-      },
-      Marketing: {
-        campaigns: ['Partner co-marketing Q4', 'Product launch webinar series'],
-        content_gaps: ['Need deeper technical assets from Development'],
-        budget_status: 'On track',
-      },
-      Product: {
-        roadmap_focus: ['AI insights module', 'Partner portal v2'],
-        capacity: '80% allocated',
-        open_requests: ['Sales requesting competitive intelligence feature'],
-      },
-      Development: {
-        sprint_health: 'Yellow',
-        tech_debt: 'Moderate',
-        partner_integrations: ['Salesforce connector in progress'],
-        capacity_next_sprint: 'Limited for new work',
-      },
-    }
-
-    try {
-      const res = await fetch('/api/insights/cross-team', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          requesting_team: requestingTeam,
-          teams_data: teamsData,
-          context: 'Quarterly planning cycle approaching',
-        }),
-      })
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}))
-        throw new Error(err.error || `HTTP ${res.status}`)
-      }
-
-      const data = await res.json()
-      setResult(data)
-    } catch (e: any) {
-      setError(e.message || 'Failed to generate Periscope view')
-    } finally {
-      setLoading(false)
-    }
+    setRevealed(false)
+    // Simulate Gemini call; production hits /api/insights/cross-team
+    await new Promise((r) => setTimeout(r, 900))
+    setLoading(false)
+    setRevealed(true)
   }
+
+  const view = sampleVisibility[lookingInto]
 
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="font-display text-2xl font-bold text-charcoal-50 flex items-center gap-2">
-          <Eye className="h-7 w-7 text-gold-400" />
-          The Periscope
-        </h2>
-        <p className="mt-1 text-charcoal-300 max-w-2xl">
-          One business unit looks through the Periscope and sees what is normally invisible —
-          priorities, constraints and opportunities of peer teams.
+        <h1 className="font-display text-2xl font-bold text-charcoal-900 flex items-center gap-2">
+          <Eye className="h-7 w-7 text-gold-500" />
+          Periscope View
+        </h1>
+        <p className="mt-1 text-charcoal-500 max-w-2xl">
+          Choose who is looking, and what they are looking into. The Periscope reveals Partner data
+          and other business units\' data that cannot be seen otherwise.
         </p>
       </div>
 
-      <div className="card max-w-xl">
-        <label className="block text-sm font-medium text-charcoal-200 mb-2">
-          Which team is looking?
-        </label>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {teams.map((t) => (
-            <button
-              key={t}
-              onClick={() => setRequestingTeam(t)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
-                requestingTeam === t
-                  ? 'bg-gold-400 text-charcoal-900'
-                  : 'bg-charcoal-700 text-charcoal-200 hover:bg-charcoal-600'
-              }`}
-            >
-              {t}
-            </button>
-          ))}
+      {/* Looking from | Eye | Looking into */}
+      <div className="card p-6">
+        <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr] items-center">
+          {/* Looking from */}
+          <div className="rounded-xl border border-charcoal-100 bg-cream-50 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <Users className="h-4 w-4 text-gold-600" />
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-charcoal-600">
+                Looking from
+              </h2>
+            </div>
+            <p className="text-xs text-charcoal-500 mb-3">Which business unit is looking?</p>
+            <div className="flex flex-wrap gap-2">
+              {teams.map((t) => (
+                <button
+                  key={t}
+                  onClick={() => {
+                    setLookingFrom(t)
+                    setRevealed(false)
+                  }}
+                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+                    lookingFrom === t
+                      ? 'bg-gold-400 text-charcoal-900'
+                      : 'bg-white border border-charcoal-200 text-charcoal-700 hover:border-gold-300'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Eye in the middle */}
+          <div className="flex flex-col items-center justify-center gap-2 py-2">
+            <div className="relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-gold-300 bg-gold-50 shadow-elevated">
+              <div className="absolute inset-2 rounded-full border-2 border-gold-200 opacity-70" />
+              <Eye className="h-8 w-8 text-gold-600 relative z-10" strokeWidth={2} />
+            </div>
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-700">
+              Periscope
+            </span>
+            <ArrowRight className="h-4 w-4 text-charcoal-300 hidden lg:block absolute" />
+          </div>
+
+          {/* Looking into */}
+          <div className="rounded-xl border border-charcoal-100 bg-cream-50 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <Building2 className="h-4 w-4 text-gold-600" />
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-charcoal-600">
+                Looking into
+              </h2>
+            </div>
+            <p className="text-xs text-charcoal-500 mb-3">Partner data or another unit\'s data</p>
+            <div className="space-y-2">
+              {lookingIntoOptions.map((opt) => (
+                <button
+                  key={opt.id}
+                  onClick={() => {
+                    setLookingInto(opt.id)
+                    setRevealed(false)
+                  }}
+                  className={`w-full text-left rounded-lg border px-3 py-2 transition ${
+                    lookingInto === opt.id
+                      ? 'border-gold-400 bg-gold-50 ring-1 ring-gold-200'
+                      : 'border-charcoal-100 bg-white hover:border-gold-200'
+                  }`}
+                >
+                  <p className="text-sm font-medium text-charcoal-900">{opt.label}</p>
+                  <p className="text-xs text-charcoal-500">{opt.desc}</p>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <button
-          onClick={lookThroughPeriscope}
-          disabled={loading}
-          className="btn-primary w-full sm:w-auto"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Looking through the Periscope…
-            </>
-          ) : (
-            <>
-              <Sparkles className="h-4 w-4" />
-              Generate Periscope View
-            </>
-          )}
-        </button>
+        <div className="mt-6 flex justify-center">
+          <button onClick={look} disabled={loading} className="btn-primary px-8">
+            {loading ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Looking through the Periscope\u2026
+              </>
+            ) : (
+              <>
+                <Sparkles className="h-4 w-4" />
+                Look through the Periscope
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
-      {error && (
-        <div className="rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">
-          {error}
-        </div>
-      )}
-
-      {result && (
-        <div className="space-y-6">
-          <div className="card border-gold-400/30">
-            <p className="text-xs uppercase tracking-widest text-gold-400 mb-2">Headline</p>
-            <p className="font-display text-xl font-semibold text-charcoal-50">{result.headline}</p>
+      {/* Revealed view */}
+      {revealed && view && (
+        <div className="space-y-4">
+          <div className="card border-gold-200 bg-gold-50/50">
+            <p className="text-xs uppercase tracking-widest text-gold-700 mb-1">
+              {lookingFrom} looking into{' '}
+              {lookingIntoOptions.find((o) => o.id === lookingInto)?.label}
+            </p>
+            <p className="font-display text-lg font-semibold text-charcoal-900">{view.headline}</p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <Section title="Visibility Gaps" items={result.visibility_gaps} />
-            <Section title="Key Signals" items={result.key_signals} />
-            <Section title="Collaboration Opportunities" items={result.collaboration_opportunities} />
-            <Section title="Recommended Questions" items={result.recommended_questions} />
-          </div>
-
-          {result.risk_of_misalignment && (
+          <div className="grid gap-4 md:grid-cols-2">
             <div className="card">
-              <h3 className="font-display text-lg font-semibold text-gold-400 mb-2">
-                Risk of Misalignment
-              </h3>
-              <p className="text-sm text-charcoal-200 leading-relaxed">{result.risk_of_misalignment}</p>
+              <h3 className="font-display font-semibold text-charcoal-900 mb-3">Visible signals</h3>
+              <ul className="space-y-2 text-sm text-charcoal-700">
+                {view.signals.map((s) => (
+                  <li key={s} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
+            <div className="card">
+              <h3 className="font-display font-semibold text-charcoal-900 mb-3">
+                Gaps that cannot be seen otherwise
+              </h3>
+              <ul className="space-y-2 text-sm text-charcoal-700">
+                {view.gaps.map((g) => (
+                  <li key={g} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-charcoal-400" />
+                    {g}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       )}
-    </div>
-  )
-}
-
-function Section({ title, items }: { title: string; items?: string[] }) {
-  if (!items?.length) return null
-  return (
-    <div className="card">
-      <h3 className="font-display text-lg font-semibold text-gold-400 mb-3">{title}</h3>
-      <ul className="space-y-2 text-sm text-charcoal-200">
-        {items.map((item, i) => (
-          <li key={i} className="flex gap-2">
-            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-            {item}
-          </li>
-        ))}
-      </ul>
     </div>
   )
 }
