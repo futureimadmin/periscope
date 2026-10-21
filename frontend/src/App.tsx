@@ -1,77 +1,144 @@
 import { Routes, Route, NavLink } from 'react-router-dom'
-import { Binoculars, LayoutDashboard, Handshake, Eye, Sparkles } from 'lucide-react'
+import {
+  LayoutDashboard,
+  Handshake,
+  Layers,
+  Users,
+  Sparkles,
+  Settings,
+  Telescope,
+} from 'lucide-react'
 import Dashboard from './pages/Dashboard'
 import Partnerships from './pages/Partnerships'
-import PeriscopeView from './pages/PeriscopeView'
 import Framework from './pages/Framework'
+import Insights from './pages/Insights'
+import Landing from './pages/Landing'
 
 const nav = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/partnerships', label: 'Partnerships', icon: Handshake },
-  { to: '/periscope', label: 'Periscope', icon: Eye },
-  { to: '/framework', label: 'Framework', icon: Sparkles },
+  { to: '/app', label: 'Dashboard', icon: LayoutDashboard, end: true },
+  { to: '/app/partnerships', label: 'Partnerships', icon: Handshake },
+  { to: '/app/framework', label: 'Framework', icon: Layers },
+  { to: '/app/teams', label: 'Teams', icon: Users },
+  { to: '/app/insights', label: 'Insights', icon: Sparkles },
 ]
+
+function AppShell({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen flex bg-cream-100">
+      {/* Sidebar */}
+      <aside className="w-60 shrink-0 border-r border-charcoal-100 bg-white flex flex-col">
+        <div className="flex items-center gap-3 px-5 h-16 border-b border-charcoal-100">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-holden-500 text-white">
+            <Telescope className="h-5 w-5" strokeWidth={2.2} />
+          </div>
+          <div>
+            <h1 className="font-display text-base font-bold text-charcoal-900 tracking-tight">
+              Periscope
+            </h1>
+            <p className="text-[10px] uppercase tracking-wider text-holden-600 font-medium">
+              Surface Edition
+            </p>
+          </div>
+        </div>
+
+        <nav className="flex-1 px-3 py-4 space-y-1">
+          {nav.map(({ to, label, icon: Icon, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) =>
+                `sidebar-link ${
+                  isActive ? 'sidebar-link-active' : 'sidebar-link-inactive'
+                }`
+              }
+            >
+              <Icon className="h-4.5 w-4.5" strokeWidth={2} />
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="px-3 py-4 border-t border-charcoal-100">
+          <NavLink
+            to="/app/settings"
+            className="sidebar-link sidebar-link-inactive"
+          >
+            <Settings className="h-4.5 w-4.5" />
+            Settings
+          </NavLink>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <div className="flex-1 flex flex-col min-w-0">
+        <header className="h-16 border-b border-charcoal-100 bg-white/80 backdrop-blur sticky top-0 z-40 flex items-center justify-between px-6">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <input
+                type="search"
+                placeholder="Search partnerships, teams, opportunities..."
+                className="w-80 rounded-lg border border-charcoal-200 bg-cream-50 pl-10 pr-4 py-2 text-sm focus:border-holden-400 focus:outline-none focus:ring-1 focus:ring-holden-400"
+              />
+              <svg
+                className="absolute left-3 top-2.5 h-4 w-4 text-charcoal-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="relative p-2 text-charcoal-500 hover:text-charcoal-800">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-holden-500" />
+            </button>
+            <div className="flex items-center gap-2">
+              <div className="h-8 w-8 rounded-full bg-holden-100 flex items-center justify-center text-holden-700 font-semibold text-sm">
+                AM
+              </div>
+              <div className="hidden sm:block text-sm">
+                <p className="font-medium text-charcoal-800">Alex Morgan</p>
+                <p className="text-xs text-charcoal-500">Growth Lead</p>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main className="flex-1 p-6 overflow-auto">{children}</main>
+      </div>
+    </div>
+  )
+}
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="border-b border-charcoal-700 bg-charcoal-900/90 backdrop-blur sticky top-0 z-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gold-400 text-charcoal-900">
-                <Binoculars className="h-5 w-5" strokeWidth={2.5} />
-              </div>
-              <div>
-                <h1 className="font-display text-lg font-bold tracking-tight text-gold-400">
-                  Periscope
-                </h1>
-                <p className="text-[10px] uppercase tracking-widest text-charcoal-300">
-                  See what others can't
-                </p>
-              </div>
-            </div>
-
-            <nav className="hidden md:flex items-center gap-1">
-              {nav.map(({ to, label, icon: Icon }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  end={to === '/'}
-                  className={({ isActive }) =>
-                    `flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition ${
-                      isActive
-                        ? 'bg-gold-400/10 text-gold-400'
-                        : 'text-charcoal-300 hover:bg-charcoal-800 hover:text-charcoal-50'
-                    }`
-                  }
-                >
-                  <Icon className="h-4 w-4" />
-                  {label}
-                </NavLink>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      {/* Main */}
-      <main className="flex-1">
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/partnerships" element={<Partnerships />} />
-            <Route path="/periscope" element={<PeriscopeView />} />
-            <Route path="/framework" element={<Framework />} />
-          </Routes>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-charcoal-800 py-6 text-center text-xs text-charcoal-400">
-        Periscope · intelligentmachines · Powered by Gemini
-      </footer>
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route
+        path="/app/*"
+        element={
+          <AppShell>
+            <Routes>
+              <Route index element={<Dashboard />} />
+              <Route path="partnerships" element={<Partnerships />} />
+              <Route path="framework" element={<Framework />} />
+              <Route path="insights" element={<Insights />} />
+              <Route path="teams" element={<Dashboard />} />
+              <Route path="settings" element={<Dashboard />} />
+            </Routes>
+          </AppShell>
+        }
+      />
+    </Routes>
   )
 }
