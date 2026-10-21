@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import {
-  Eye,
-  ArrowRight,
   Sparkles,
   Loader2,
   Building2,
   Users,
 } from 'lucide-react'
+import PeriscopeIcon from '../components/PeriscopeIcon'
 
 const teams = ['Sales', 'Marketing', 'Product', 'Development'] as const
 
@@ -90,7 +89,6 @@ export default function PeriscopeView() {
   async function look() {
     setLoading(true)
     setRevealed(false)
-    // Simulate Gemini call; production hits /api/insights/cross-team
     await new Promise((r) => setTimeout(r, 900))
     setLoading(false)
     setRevealed(true)
@@ -102,7 +100,7 @@ export default function PeriscopeView() {
     <div className="space-y-8">
       <div>
         <h1 className="font-display text-2xl font-bold text-charcoal-900 flex items-center gap-2">
-          <Eye className="h-7 w-7 text-gold-500" />
+          <PeriscopeIcon className="h-8 w-8" />
           Periscope View
         </h1>
         <p className="mt-1 text-charcoal-500 max-w-2xl">
@@ -111,10 +109,8 @@ export default function PeriscopeView() {
         </p>
       </div>
 
-      {/* Looking from | Eye | Looking into */}
       <div className="card p-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr] items-center">
-          {/* Looking from */}
           <div className="rounded-xl border border-charcoal-100 bg-cream-50 p-5">
             <div className="flex items-center gap-2 mb-3">
               <Users className="h-4 w-4 text-gold-600" />
@@ -143,19 +139,16 @@ export default function PeriscopeView() {
             </div>
           </div>
 
-          {/* Eye in the middle */}
+          {/* Periscope mark in the middle */}
           <div className="flex flex-col items-center justify-center gap-2 py-2">
-            <div className="relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-gold-300 bg-gold-50 shadow-elevated">
-              <div className="absolute inset-2 rounded-full border-2 border-gold-200 opacity-70" />
-              <Eye className="h-8 w-8 text-gold-600 relative z-10" strokeWidth={2} />
+            <div className="relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-gold-300 bg-white shadow-elevated overflow-hidden">
+              <PeriscopeIcon className="h-14 w-14 relative z-10" />
             </div>
             <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-700">
               Periscope
             </span>
-            <ArrowRight className="h-4 w-4 text-charcoal-300 hidden lg:block absolute" />
           </div>
 
-          {/* Looking into */}
           <div className="rounded-xl border border-charcoal-100 bg-cream-50 p-5">
             <div className="flex items-center gap-2 mb-3">
               <Building2 className="h-4 w-4 text-gold-600" />
@@ -203,7 +196,6 @@ export default function PeriscopeView() {
         </div>
       </div>
 
-      {/* Revealed view */}
       {revealed && view && (
         <div className="space-y-4">
           <div className="card border-gold-200 bg-gold-50/50">
