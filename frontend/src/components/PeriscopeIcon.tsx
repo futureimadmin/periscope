@@ -1,7 +1,7 @@
 /**
- * Original Periscope mark — not a telescope.
- * Vertical tube, side eyepiece (no overlap on shaft), top arm + objective.
- * You do not look straight through.
+ * Periscope mark (not a telescope).
+ * Vertical shaft is continuous. Side eyepiece sits fully clear of the shaft,
+ * connected only by a short stem. Top arm + objective lens on the right.
  */
 export default function PeriscopeIcon({
   className = 'h-5 w-5',
@@ -22,20 +22,17 @@ export default function PeriscopeIcon({
       className={className}
       aria-hidden
     >
-      {/* Continuous vertical shaft — uninterrupted */}
-      <path d="M11 4v16" />
-      <path d="M15 4v16" />
+      {/* Vertical shaft — continuous, no cutouts */}
+      <path d="M10 5v15" />
+      <path d="M14 5v15" />
+      <path d="M10 20h4" />
 
-      {/* Bottom base / stand */}
-      <path d="M9 20h8" />
+      {/* Stem + eyepiece: stem ends at x=10; circle is entirely left of x=7 */}
+      <path d="M10 15H7" />
+      <circle cx="4.5" cy="15" r="2" />
 
-      {/* Side eyepiece — fully to the left of the shaft, connected by a short stem only */}
-      <path d="M11 16H7" />
-      <circle cx="5" cy="16" r="2" />
-
-      {/* Top horizontal arm to the right */}
-      <path d="M15 6h4" />
-      {/* Objective lens at end of arm */}
+      {/* Top arm to the right */}
+      <path d="M14 6h4.5" />
       <circle cx="20.5" cy="6" r="2" />
     </svg>
   )
