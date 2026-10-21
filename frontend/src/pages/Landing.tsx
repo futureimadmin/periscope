@@ -5,7 +5,6 @@ import {
   Layers,
   Users,
   TrendingUp,
-  ShieldCheck,
   Sparkles,
   ArrowRight,
   Database,
@@ -57,11 +56,11 @@ export default function Landing() {
       <header className="border-b border-charcoal-100 bg-white/90 backdrop-blur sticky top-0 z-50">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-holden-500 text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-charcoal-900">
               <Telescope className="h-5 w-5" strokeWidth={2.2} />
             </div>
             <span className="font-display text-lg font-bold text-charcoal-900">Periscope</span>
-            <span className="ml-2 rounded-full bg-holden-100 px-2.5 py-0.5 text-xs font-medium text-holden-700">
+            <span className="ml-2 rounded-full bg-gold-100 px-2.5 py-0.5 text-xs font-medium text-gold-800">
               Surface Edition
             </span>
           </div>
@@ -75,13 +74,13 @@ export default function Landing() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-holden-100 px-4 py-1.5 text-sm font-medium text-holden-800 mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full bg-gold-100 px-4 py-1.5 text-sm font-medium text-gold-800 mb-6">
             <Telescope className="h-4 w-4" />
             See things that cannot be seen otherwise
           </div>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal-900 max-w-3xl mx-auto leading-tight">
             Look through the Periscope and see{' '}
-            <span className="text-holden-600">Partner & cross-team data</span>
+            <span className="text-gold-600">Partner & cross-team data</span>
           </h1>
           <p className="mt-6 text-lg text-charcoal-600 max-w-2xl mx-auto leading-relaxed">
             Periscope is the partnership intelligence platform that lets any business unit
@@ -119,7 +118,7 @@ export default function Landing() {
                 key={title}
                 className="card hover:shadow-elevated transition-shadow duration-200"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-holden-50 text-holden-600 mb-4">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gold-100 text-gold-700 mb-4">
                   <Icon className="h-5 w-5" strokeWidth={2} />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-charcoal-900">{title}</h3>
@@ -133,18 +132,18 @@ export default function Landing() {
       {/* CTA */}
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="rounded-2xl bg-holden-500 px-8 py-12 text-white shadow-elevated">
+          <div className="rounded-2xl bg-gold-400 px-8 py-12 text-charcoal-900 shadow-elevated">
             <h2 className="font-display text-2xl md:text-3xl font-bold">
               Ready to see data that cannot be seen otherwise?
             </h2>
-            <p className="mt-3 text-holden-100 max-w-lg mx-auto">
+            <p className="mt-3 text-charcoal-800 max-w-lg mx-auto">
               The Surface Edition brings Periscope into clear view \u2014 so any business unit
               can look through it and access Partner data and cross-team signals that were
               previously invisible.
             </p>
             <Link
               to="/app"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-holden-700 hover:bg-cream-50 transition"
+              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-charcoal-900 px-6 py-3 text-sm font-semibold text-gold-400 hover:bg-charcoal-800 transition"
             >
               Enter Periscope
               <ArrowRight className="h-4 w-4" />
