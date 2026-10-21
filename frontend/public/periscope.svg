@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Periscope">
+  <defs>
+    <clipPath id="pBadge"><circle cx="64" cy="64" r="60"/></clipPath>
+    <clipPath id="pBelow"><rect x="0" y="80" width="128" height="48"/></clipPath>
+
+    <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFDF0"/>
+      <stop offset="1" stop-color="#FFF3C4"/>
+    </linearGradient>
+    <linearGradient id="pWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5BC8F0" stop-opacity=".62"/>
+      <stop offset=".5" stop-color="#2E9BD6" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#0E5FA8" stop-opacity=".62"/>
+    </linearGradient>
+    <linearGradient id="pLens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7FD3FF"/>
+      <stop offset=".55" stop-color="#1D6FD1"/>
+      <stop offset="1" stop-color="#0A2A66"/>
+    </linearGradient>
+    <linearGradient id="pHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFE94A"/>
+      <stop offset=".6" stop-color="#FFC400"/>
+      <stop offset="1" stop-color="#C98F00"/>
+    </linearGradient>
+    <radialGradient id="pBubble" cx=".35" cy=".3" r=".8">
+      <stop offset="0" stop-color="#fff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#bfe8ff" stop-opacity=".15"/>
+    </radialGradient>
+  </defs>
+
+  <!-- badge: pale sky above, water below -->
+  <circle cx="64" cy="64" r="60" fill="url(#pSky)"/>
+
+  <g clip-path="url(#pBadge)">
+    <!-- ===== periscope (above & below the waterline) ===== -->
+    <g stroke-linecap="butt" stroke-linejoin="round" fill="none">
+      <path d="M50 132V46Q50 31 65 31H82" stroke="#6B4A00" stroke-width="24"/>
+      <path d="M50 132V46Q50 31 65 31H82" stroke="#E0A800" stroke-width="20"/>
+      <path d="M50 132V46Q50 31 65 31H82" stroke="#FFCE00" stroke-width="14"/>
+      <path d="M45.5 132V47Q45.5 35.5 57 35.5H80" stroke="#FFF6A8" stroke-width="3.2" opacity=".85"/>
+    </g>
+
+    <!-- head housing + lens -->
+    <rect x="78" y="19" width="17" height="24" rx="4" fill="url(#pHead)" stroke="#6B4A00" stroke-width="2.4"/>
+    <ellipse cx="96" cy="31" rx="6.4" ry="12" fill="#2A1C00"/>
+    <ellipse cx="96" cy="31" rx="5" ry="10" fill="url(#pLens)"/>
+    <ellipse cx="94.6" cy="26.5" rx="1.7" ry="3.6" fill="#fff" opacity=".85"/>
+
+    <!-- collar -->
+    <rect x="37" y="62" width="26" height="8" rx="2" fill="#FFD21A" stroke="#6B4A00" stroke-width="2"/>
+    <circle cx="42" cy="66" r="1.4" fill="#8A5E00"/>
+    <circle cx="58" cy="66" r="1.4" fill="#8A5E00"/>
+
+    <!-- ===== water ===== -->
+    <path d="M-4 81Q8 76 20 81T44 81T68 81T92 81T116 81T140 81V132H-4Z" fill="url(#pWater)"/>
+
+    <!-- depth fade so the lower pipe dissolves -->
+    <rect x="0" y="100" width="128" height="30" fill="#0E5FA8" opacity=".18"/>
+
+    <!-- caustic light on the submerged pipe -->
+    <g clip-path="url(#pBelow)" fill="none" stroke="#FFF3A0" stroke-linecap="round" opacity=".8">
+      <path d="M41 88q5 3 10 0t10 0" stroke-width="1.6"/>
+      <path d="M40 96q5-3 10 0t11 0" stroke-width="1.4"/>
+      <path d="M41 104q6 3 11 0t9 0" stroke-width="1.2" opacity=".7"/>
+      <path d="M43 111q5-2 9 0t8 0" stroke-width="1" opacity=".5"/>
+    </g>
+
+    <!-- surface highlights + ripples around the pipe -->
+    <path d="M-4 81Q8 76 20 81T44 81T68 81T92 81T116 81T140 81" fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity=".9"/>
+    <path d="M6 84Q16 81 28 84M80 84Q92 81 104 84" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity=".55" stroke-linecap="round"/>
+    <ellipse cx="50" cy="81.5" rx="19" ry="3.4" fill="none" stroke="#fff" stroke-width="1.4" opacity=".85"/>
+    <ellipse cx="50" cy="82" rx="27" ry="5" fill="none" stroke="#fff" stroke-width="1" opacity=".4"/>
+
+    <!-- bubbles -->
+    <g stroke="#fff" stroke-width=".7" stroke-opacity=".8">
+      <circle cx="33" cy="94" r="2.4" fill="url(#pBubble)"/>
+      <circle cx="30" cy="104" r="1.5" fill="url(#pBubble)"/>
+      <circle cx="69" cy="92" r="2" fill="url(#pBubble)"/>
+      <circle cx="73" cy="101" r="1.3" fill="url(#pBubble)"/>
+      <circle cx="68" cy="110" r="1.8" fill="url(#pBubble)"/>
+      <circle cx="35" cy="113" r="1.2" fill="url(#pBubble)"/>
+    </g>
+  </g>
+
+  <!-- ring -->
+  <circle cx="64" cy="64" r="59" fill="none" stroke="#E0A800" stroke-width="2.4"/>
+  <circle cx="64" cy="64" r="60.6" fill="none" stroke="#6B4A00" stroke-opacity=".25" stroke-width=".8"/>
+</svg>
