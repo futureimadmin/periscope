@@ -66,15 +66,13 @@ function scoreColor(score: number) {
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="font-display text-2xl font-bold text-charcoal-900">Periscope View</h1>
+          <h1 className="font-display text-2xl font-bold text-charcoal-900">Command Centre</h1>
           <p className="mt-1 text-charcoal-500">
-            See Partner data and other business units' data that cannot be seen otherwise.
+            Partnership health, growth signals and cross-team visibility at a glance.
           </p>
         </div>
-        {/* Circular radar motif */}
         <div className="hidden lg:flex h-28 w-28 items-center justify-center rounded-full border-4 border-gold-200 bg-gold-50 relative">
           <div className="absolute inset-3 rounded-full border-2 border-gold-300 opacity-60" />
           <div className="absolute inset-6 rounded-full border border-gold-400 opacity-40" />
@@ -85,7 +83,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Metrics */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((m) => (
           <div key={m.label} className="card">
@@ -106,9 +103,7 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* Main grid */}
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* Heatmap */}
         <div className="card lg:col-span-1">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-display font-semibold text-charcoal-900">Partnership Health Heatmap</h2>
@@ -148,7 +143,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* AI Opportunities */}
         <div className="card lg:col-span-1">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-display font-semibold text-charcoal-900">AI-generated Opportunities</h2>
@@ -177,7 +171,6 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Gemini Insights */}
         <div className="card lg:col-span-1">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-display font-semibold text-charcoal-900 flex items-center gap-2">
@@ -201,7 +194,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Live lens indicator */}
       <div className="card flex items-center gap-3 bg-gold-50 border-gold-100">
         <div className="h-2.5 w-2.5 rounded-full bg-gold-400 animate-pulse" />
         <div>
