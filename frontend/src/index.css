@@ -10,11 +10,11 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-holden-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-holden-600 focus:outline-none focus:ring-2 focus:ring-holden-400 focus:ring-offset-2 disabled:opacity-50 shadow-sm;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gold-400 px-4 py-2.5 text-sm font-semibold text-charcoal-900 transition hover:bg-gold-300 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 disabled:opacity-50 shadow-sm;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-charcoal-200 bg-white px-4 py-2.5 text-sm font-medium text-charcoal-700 transition hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-holden-400 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-charcoal-200 bg-white px-4 py-2.5 text-sm font-medium text-charcoal-700 transition hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2;
   }
 
   .card {
@@ -26,7 +26,7 @@
   }
 
   .input {
-    @apply w-full rounded-lg border border-charcoal-200 bg-white px-3 py-2 text-sm text-charcoal-800 placeholder:text-charcoal-400 focus:border-holden-400 focus:outline-none focus:ring-1 focus:ring-holden-400;
+    @apply w-full rounded-lg border border-charcoal-200 bg-white px-3 py-2 text-sm text-charcoal-800 placeholder:text-charcoal-400 focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400;
   }
 
   .sidebar-link {
@@ -34,7 +34,7 @@
   }
 
   .sidebar-link-active {
-    @apply bg-holden-50 text-holden-700;
+    @apply bg-gold-100 text-gold-800;
   }
 
   .sidebar-link-inactive {
