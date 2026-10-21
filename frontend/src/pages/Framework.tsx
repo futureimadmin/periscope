@@ -125,12 +125,12 @@ export default function Framework() {
               onClick={() => setSelected(t.id)}
               className={`w-full text-left card p-4 transition ${
                 selected === t.id
-                  ? 'border-holden-400 ring-1 ring-holden-200 bg-holden-50'
-                  : 'hover:border-holden-200'
+                  ? 'border-gold-400 ring-1 ring-gold-200 bg-gold-50'
+                  : 'hover:border-gold-200'
               }`}
             >
               <div className="flex items-center gap-2 mb-1">
-                <t.icon className="h-4 w-4 text-holden-600" />
+                <t.icon className="h-4 w-4 text-gold-600" />
                 <span className="font-medium text-charcoal-900 text-sm">{t.title}</span>
               </div>
               <p className="text-xs text-charcoal-500 leading-relaxed">{t.desc}</p>
@@ -144,7 +144,7 @@ export default function Framework() {
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
                 <span className="font-display font-semibold text-charcoal-900">Partnership Framework</span>
-                <span className="rounded-full bg-holden-100 px-2 py-0.5 text-xs font-medium text-holden-700">
+                <span className="rounded-full bg-gold-100 px-2 py-0.5 text-xs font-medium text-gold-800">
                   Draft v0.3
                 </span>
               </div>
@@ -154,10 +154,10 @@ export default function Framework() {
               {stages.map((stage, idx) => (
                 <div
                   key={stage.id}
-                  className="rounded-lg border border-charcoal-100 p-4 hover:border-holden-200 transition"
+                  className="rounded-lg border border-charcoal-100 p-4 hover:border-gold-200 transition"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-holden-500 text-white text-xs font-bold">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-400 text-charcoal-900 text-xs font-bold">
                       {stage.id}
                     </span>
                     <h3 className="font-semibold text-charcoal-900">{stage.name}</h3>
@@ -193,7 +193,7 @@ export default function Framework() {
                   </div>
                   {idx < stages.length - 1 && (
                     <div className="mt-3 flex justify-center">
-                      <div className="h-4 w-px bg-holden-300" />
+                      <div className="h-4 w-px bg-gold-300" />
                     </div>
                   )}
                 </div>
@@ -206,9 +206,9 @@ export default function Framework() {
         <div className="lg:col-span-3">
           <div className="card sticky top-24">
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="h-4 w-4 text-holden-500" />
+              <Sparkles className="h-4 w-4 text-gold-500" />
               <h2 className="font-semibold text-charcoal-900">AI Assist (Gemini)</h2>
-              <span className="ml-auto rounded bg-holden-100 px-1.5 py-0.5 text-[10px] font-medium text-holden-700">
+              <span className="ml-auto rounded bg-gold-100 px-1.5 py-0.5 text-[10px] font-medium text-gold-800">
                 Beta
               </span>
             </div>
@@ -222,7 +222,7 @@ export default function Framework() {
                 <p className="text-xs text-charcoal-500 mt-1">
                   Add "Partner landscape analysis" as a key activity.
                 </p>
-                <button className="mt-2 text-xs font-medium text-holden-600 hover:text-holden-700">
+                <button className="mt-2 text-xs font-medium text-gold-700 hover:text-gold-800">
                   Apply
                 </button>
               </div>
@@ -231,7 +231,7 @@ export default function Framework() {
                 <p className="text-xs text-charcoal-500 mt-1">
                   Include "BATNA definition" in success metrics.
                 </p>
-                <button className="mt-2 text-xs font-medium text-holden-600 hover:text-holden-700">
+                <button className="mt-2 text-xs font-medium text-gold-700 hover:text-gold-800">
                   Apply
                 </button>
               </div>
