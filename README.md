@@ -1,18 +1,60 @@
-# Periscope \u2014 Surface Edition
+# Periscope
 
 > **See things that cannot be seen otherwise.**
 
-## What is Periscope?
+Periscope is a partnership intelligence platform. One business unit looks through a shared lens and gains visibility into **Partner data** and **other business units’ data** — information that is normally invisible because of organisational silos.
 
-Periscope is a partnership intelligence platform that allows **one business unit to look through a shared lens** and gain visibility into:
+The name comes from a periscope: an instrument that lets you see what is blocked from direct view. You do not look straight through; you see what would otherwise stay hidden.
 
-- **Partner data** (information that partners hold or generate)
-- **Other business units\u2019 data** (Sales, Marketing, Product, Development signals)
+---
 
-This is data that is **normally invisible** because of organisational silos.  
-Looking through the Periscope makes it visible.
+## Editions
 
-The name comes from the idea of a periscope: an instrument that lets you see things that cannot be seen otherwise.
+| Edition | Metaphor | Job |
+|--------|----------|-----|
+| **Surface Edition** | What breaks the waterline | **Visibility** — Looking from / Looking into Partner and cross-BU data |
+| **Depth Edition** | What stays submerged | **Structure** — Framework Builder, formal partnership stages, operating model |
+
+**Surface** brings the periscope up so teams can *see*.  
+**Depth** is the submerged machinery: how Sales, Marketing, Product and Development *run* partnerships once they can see.
+
+> Periscope surfaces what silos hide; Depth formalises how teams act on what they see — the submerged operating model of cross-BU collaboration.
+
+---
+
+## Surface Edition (this branch)
+
+Surface is focused on visibility only.
+
+### What is included
+
+| Screen | Purpose |
+|--------|---------|
+| **Landing** | Product value: visibility into Partner & other BU data |
+| **Command Centre** | Partnership health, growth signals, cross-team snapshot |
+| **Periscope View** | **Looking from** (which BU) → **Looking into** (Partner or peer-unit data) |
+| **Collaboration Spaces** | Shared canvas, signals, light day-to-day collaboration |
+| **Partnerships** | List and health of formalised / emerging partnerships |
+| **Insights** | Gemini-powered opportunity radar and blind spots |
+
+### What is *not* in Surface
+
+**Framework Builder** (templates, six-stage pipeline, RACI, publish control) belongs to **Depth Edition**. It is the submerged structure — formalisation of how partnerships are run — not the surface view.
+
+---
+
+## Depth Edition (roadmap)
+
+Depth Edition holds what stays submerged:
+
+- **Framework Builder** — design and publish partnership frameworks (Strategic Alliance, Channel, Co-Sell, Technology Partner)
+- Stage model (Discovery → Renewal) with activities, success metrics and key risks
+- Stage-level RACI across Sales, Marketing, Product and Development
+- Framework versioning and admin publish controls
+- Deeper governance for cross-BU operating models
+
+Surface answers: *What can we see that we could not see otherwise?*  
+Depth answers: *How do we formalise and run partnerships together?*
 
 ---
 
@@ -24,67 +66,50 @@ Without Periscope:
 - Product cannot see early pipeline intent from Sales
 - No single team has a clear view of Partner health across the organisation
 
-With Periscope:
+With **Surface**:
 - Any business unit can look through the Periscope and see Partner data + cross-team data in context
-- Partnerships can be formalised with a scalable framework
 - AI (Gemini) surfaces opportunities and risks that only become visible when these data sources are combined
 
----
-
-## Benefits of using Periscope
-
-- **See Data That Cannot Be Seen Otherwise** \u2014 Partner data and other business units\u2019 data become visible through a single lens.
-- **Partner + Cross-BU Visibility** \u2014 Sales sees Product signals. Marketing sees Development capacity. Product sees pipeline intent. Everyone sees relevant Partner data.
-- **Formalise Without Friction** \u2014 Scalable framework with templates, stages, RACI, success metrics and governance.
-- **True Cross-Team Collaboration** \u2014 Shared partnership canvas for Sales, Marketing, Product and Development.
-- **Gemini-Powered Insights** \u2014 AI surfaces opportunities and risks that only appear when Partner data is combined with cross-team signals.
-- **Accelerate Growth & Satisfaction** \u2014 Link partnership activity to revenue, pipeline velocity, market position and Partner CSAT.
+With **Depth** (submerged structure):
+- Partnerships are formalised with a scalable framework shared by all BUs
+- Stages, metrics and ownership are explicit — collaboration becomes designed execution, not parallel activity
 
 ---
 
-## Branch Strategy
+## Benefits
 
-- `main` \u2014 clean, stable baseline
-- `surface` \u2014 **Surface Edition**: polished UI matching the product prototypes, light Golden Yellow theme, full feature screens
+**Surface**
+- See data that cannot be seen otherwise (Partner + other BU data)
+- Partner and cross-BU visibility in one lens
+- Gemini-powered insights from combined signals
+- Accelerate growth and partner satisfaction with shared visibility
 
-The Surface Edition represents bringing Periscope to the surface so teams can finally see Partner data and other business units\u2019 data that cannot be seen otherwise.
-
----
-
-## Core Screens (Surface Edition)
-
-| Screen | Purpose |
-|--------|---------|
-| **Landing** | Explains the core value: visibility into Partner & other BU data that cannot be seen otherwise |
-| **Periscope View (Dashboard)** | Real-time metrics, health heatmap, AI opportunities, Gemini insights |
-| **Framework Builder** | Design and publish partnership frameworks with stage templates and AI assist |
-| **Partnerships** | Manage formalized and emerging partnerships across teams |
-| **Opportunity Radar (Insights)** | Gemini-powered radar of hidden opportunities, risks and recommended actions |
+**Depth** (submerged)
+- Formalise without friction — templates, stages, RACI, success metrics
+- True cross-team operating model for Sales, Marketing, Product and Development
 
 ---
 
-## Tech Stack
+## Branch strategy
+
+- `main` — clean, stable baseline
+- `surface` — **Surface Edition** UI: visibility screens, Golden Yellow theme (no Framework Builder in nav)
+
+---
+
+## Tech stack
 
 | Layer | Technology |
 |-------|------------|
 | Frontend | React + Vite + Tailwind CSS |
-| Theme | **Golden Yellow** light theme (`#FFDF00` primary, cream backgrounds) |
+| Theme | Golden Yellow (`#FFDF00`), cream backgrounds |
 | Backend | Google Cloud Functions (Python 3.12) |
 | AI | Gemini via Application Default Credentials (ADC) |
 | GCP Project | `intelligentmachines` |
 
 ---
 
-## Theme \u2014 Golden Yellow (Surface)
-
-- Primary: `#FFDF00` (Golden Yellow)
-- Cream background: `#FFF8E7`
-- Charcoal text/surfaces for contrast
-- Clean, airy SaaS aesthetic matching the product prototypes
-
----
-
-## Getting Started
+## Getting started (Surface)
 
 ```bash
 git checkout surface
@@ -118,13 +143,14 @@ gcloud functions deploy periscope-api \
 
 ---
 
-## AI Features (Gemini + ADC)
+## AI (Gemini + ADC)
 
 All AI calls use Application Default Credentials.  
-Locally run: `gcloud auth application-default login`.
+Locally: `gcloud auth application-default login`.
 
 ---
 
-**Surface Edition** \u2014 bringing Periscope to the surface so any business unit can see Partner data and other business units\u2019 data that cannot be seen otherwise.  
+**Surface Edition** — bring the periscope to the surface to see Partner data and other business units’ data that cannot be seen otherwise.  
+**Depth Edition** — the submerged operating model: Framework Builder and formal cross-BU partnership structure.
 
-Built for intelligentmachines \u00b7 Powered by Gemini
+Built for intelligentmachines · Powered by Gemini
