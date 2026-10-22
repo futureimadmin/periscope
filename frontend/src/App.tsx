@@ -4,7 +4,6 @@ import {
   Eye,
   MessageSquare,
   Handshake,
-  Layers,
   Sparkles,
   Settings,
 } from 'lucide-react'
@@ -13,16 +12,15 @@ import Dashboard from './pages/Dashboard'
 import PeriscopeView from './pages/PeriscopeView'
 import Collaboration from './pages/Collaboration'
 import Partnerships from './pages/Partnerships'
-import Framework from './pages/Framework'
 import Insights from './pages/Insights'
 import Landing from './pages/Landing'
 
+/** Surface Edition nav — visibility only. Framework Builder is Depth Edition. */
 const nav = [
   { to: '/app', label: 'Command Centre', icon: LayoutDashboard, end: true },
   { to: '/app/periscope', label: 'Periscope View', icon: Eye },
   { to: '/app/collaboration', label: 'Collaboration Spaces', icon: MessageSquare },
   { to: '/app/partnerships', label: 'Partnerships', icon: Handshake },
-  { to: '/app/framework', label: 'Framework', icon: Layers },
   { to: '/app/insights', label: 'Insights', icon: Sparkles },
 ]
 
@@ -58,6 +56,15 @@ function AppShell({ children }: { children: React.ReactNode }) {
               {label}
             </NavLink>
           ))}
+
+          <div className="mt-4 px-3 py-3 rounded-lg border border-dashed border-charcoal-200 bg-cream-50">
+            <p className="text-[10px] uppercase tracking-wider font-semibold text-charcoal-500">
+              Depth Edition
+            </p>
+            <p className="mt-1 text-xs text-charcoal-600 leading-snug">
+              Framework Builder and formal partnership models stay submerged — operating structure, not only the view.
+            </p>
+          </div>
         </nav>
 
         <div className="px-3 py-4 border-t border-charcoal-100">
@@ -122,7 +129,6 @@ export default function App() {
               <Route path="periscope" element={<PeriscopeView />} />
               <Route path="collaboration" element={<Collaboration />} />
               <Route path="partnerships" element={<Partnerships />} />
-              <Route path="framework" element={<Framework />} />
               <Route path="insights" element={<Insights />} />
               <Route path="settings" element={<Dashboard />} />
             </Routes>
