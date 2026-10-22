@@ -1,22 +1,12 @@
-"""Lightweight partnership workflow (FSM) for Depth Edition."""
+"""Depth Framework Builder: per-BU frameworks, linked steps, hooks."""
 
-from .fsm import PartnershipFSM, TransitionError
-from .models import (
-    DEFAULT_STAGES,
-    Framework,
-    FrameworkStage,
-    PartnershipRun,
-    StageKey,
-)
+from .models import Framework, Hook, HookConnection, Step
 from .store import store
 
 __all__ = [
-    "PartnershipFSM",
-    "TransitionError",
-    "DEFAULT_STAGES",
     "Framework",
-    "FrameworkStage",
-    "PartnershipRun",
-    "StageKey",
+    "Hook",
+    "HookConnection",
+    "Step",
     "store",
 ]
