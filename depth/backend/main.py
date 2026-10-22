@@ -46,7 +46,7 @@ def periscope_api(request: Request):
         if path == "/partnerships/recommend-framework":
             result = gemini.recommend_framework(
                 partnership_type=data.get("partnership_type", "cross-functional"),
-                teams=data.get("teams", []),
+                parties=data.get("parties") or data.get("teams", []),
                 goals=data.get("goals", []),
                 constraints=data.get("constraints"),
             )
