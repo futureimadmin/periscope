@@ -1,235 +1,180 @@
 import { useState } from 'react'
-import {
-  Sparkles,
-  Loader2,
-  Building2,
-  Users,
-} from 'lucide-react'
+import { Sparkles, Loader2, Anchor } from 'lucide-react'
 import PeriscopeIcon from '../components/PeriscopeIcon'
 
-const teams = ['Sales', 'Marketing', 'Product', 'Development'] as const
+const teams = ['Sales', 'Marketing', 'Product', 'Development']
 
-const lookingIntoOptions = [
-  { id: 'partner-data', label: 'Partner data', desc: 'Partner health, engagement, CSAT, pipeline contribution' },
-  { id: 'sales', label: 'Sales data', desc: 'Pipeline, deals, blockers, capacity signals' },
-  { id: 'marketing', label: 'Marketing data', desc: 'Campaigns, content gaps, demand signals' },
-  { id: 'product', label: 'Product data', desc: 'Roadmap, capacity, open requests' },
-  { id: 'development', label: 'Development data', desc: 'Sprint health, integrations, tech debt' },
-]
-
-const sampleVisibility: Record<string, { headline: string; signals: string[]; gaps: string[] }> = {
-  'partner-data': {
-    headline: 'Partner signals that are normally locked in partner systems and account teams.',
-    signals: [
-      'Acme Corp CSAT dipped 8 pts after last integration delay',
-      'Northbeam increased joint pipeline 23% QoQ',
-      '3 partners flagged low engagement but high strategic fit',
-    ],
-    gaps: [
-      'No shared view of partner success plans across Sales and Product',
-      'Partner roadmap commitments not visible to Development',
-    ],
-  },
-  sales: {
-    headline: 'Sales pipeline and constraints that other units rarely see in full.',
-    signals: [
-      'Top deals blocked on missing Product roadmap clarity',
-      '$4.2M pipeline with capacity constraints in Q4',
-      'Competitive intelligence requests stacking up',
-    ],
-    gaps: [
-      'Product cannot see early intent signals from open deals',
-      'Marketing cannot see which partners drive pipeline',
-    ],
-  },
-  marketing: {
-    headline: 'Campaign and demand data that sits outside other teams\' day-to-day view.',
-    signals: [
-      'Partner co-marketing Q4 needs technical assets from Development',
-      'Webinar series driving mid-market interest',
-      'Budget on track; content gaps on integrations',
-    ],
-    gaps: [
-      'Sales cannot see campaign attribution by partner',
-      'Product cannot see demand themes from campaigns',
-    ],
-  },
-  product: {
-    headline: 'Roadmap and capacity signals that Sales and Marketing usually lack.',
-    signals: [
-      'AI insights module and Partner portal v2 in focus',
-      '80% capacity already allocated',
-      'Open request: competitive intelligence feature from Sales',
-    ],
-    gaps: [
-      'Sales cannot see which features land this quarter',
-      'Development capacity not reflected in partner commitments',
-    ],
-  },
-  development: {
-    headline: 'Engineering reality that partner and GTM teams cannot see otherwise.',
-    signals: [
-      'Sprint health: Yellow; limited room for new work',
-      'Salesforce connector in progress',
-      'Tech debt moderate; partner integrations competing for slots',
-    ],
-    gaps: [
-      'Partner SLAs set without visibility into sprint load',
-      'Marketing launch dates not aligned to integration readiness',
-    ],
-  },
+/** Demo feed: published hooks (mirrors GET /surface/visibility) */
+const publishedByProvider: Record<
+  string,
+  { hook: string; step: string; info: Record<string, string | number> }[]
+> = {
+  Product: [
+    {
+      hook: 'Capacity signal',
+      step: 'Capacity check',
+      info: { capacity_pct: 80, next_available_sprint: 'Sprint 42' },
+    },
+  ],
+  Sales: [
+    {
+      hook: 'Pipeline signal',
+      step: 'Qualify partner',
+      info: { open_partner_deals: 12, weighted_pipeline: '$2.4M' },
+    },
+  ],
+  Marketing: [
+    {
+      hook: 'Demand themes',
+      step: 'Campaign planning',
+      info: { top_theme: 'Partner portal', webinar_pipeline: 340 },
+    },
+  ],
+  Development: [
+    {
+      hook: 'Sprint load',
+      step: 'Sprint planning',
+      info: { health: 'Yellow', free_capacity: '1 sprint' },
+    },
+  ],
 }
 
 export default function PeriscopeView() {
-  const [lookingFrom, setLookingFrom] = useState<string>('Product')
-  const [lookingInto, setLookingInto] = useState<string>('partner-data')
+  const [lookingFrom, setLookingFrom] = useState('Sales')
+  const [lookingInto, setLookingInto] = useState('Product')
   const [loading, setLoading] = useState(false)
   const [revealed, setRevealed] = useState(false)
 
   async function look() {
     setLoading(true)
     setRevealed(false)
-    await new Promise((r) => setTimeout(r, 900))
+    await new Promise((r) => setTimeout(r, 700))
     setLoading(false)
     setRevealed(true)
   }
 
-  const view = sampleVisibility[lookingInto]
+  const visible =
+    lookingFrom !== lookingInto ? publishedByProvider[lookingInto] ?? [] : []
 
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-display text-2xl font-bold text-charcoal-900 flex items-center gap-2">
-          <PeriscopeIcon className="h-9 w-9" />
-          Periscope View
+        <p className="text-xs font-semibold uppercase tracking-wider text-gold-700">
+          Surface Edition · Periscope View
+        </p>
+        <h1 className="mt-1 font-display text-2xl font-bold text-charcoal-900">
+          See things that cannot be seen otherwise
         </h1>
-        <p className="mt-1 text-charcoal-500 max-w-2xl">
-          Choose who is looking, and what they are looking into. The Periscope reveals Partner data
-          and other business units\' data that cannot be seen otherwise.
+        <p className="mt-1 max-w-2xl text-sm text-charcoal-600">
+          Looking from your BU into another BU shows information published through{' '}
+          <strong>hooks</strong> on their framework steps — partner and cross-unit data
+          that Depth established and published.
         </p>
       </div>
 
-      <div className="card p-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr] items-center">
-          <div className="rounded-xl border border-charcoal-100 bg-cream-50 p-5">
-            <div className="flex items-center gap-2 mb-3">
-              <Users className="h-4 w-4 text-gold-600" />
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-charcoal-600">
-                Looking from
-              </h2>
-            </div>
-            <p className="text-xs text-charcoal-500 mb-3">Which business unit is looking?</p>
-            <div className="flex flex-wrap gap-2">
-              {teams.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => {
-                    setLookingFrom(t)
-                    setRevealed(false)
-                  }}
-                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
-                    lookingFrom === t
-                      ? 'bg-gold-400 text-charcoal-900'
-                      : 'bg-white border border-charcoal-200 text-charcoal-700 hover:border-gold-300'
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Full round image fills the lens — no yellow ring behind it */}
-          <div className="flex flex-col items-center justify-center gap-2 py-2">
-            <PeriscopeIcon className="h-20 w-20 shadow-elevated" />
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-700">
-              Periscope
-            </span>
-          </div>
-
-          <div className="rounded-xl border border-charcoal-100 bg-cream-50 p-5">
-            <div className="flex items-center gap-2 mb-3">
-              <Building2 className="h-4 w-4 text-gold-600" />
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-charcoal-600">
-                Looking into
-              </h2>
-            </div>
-            <p className="text-xs text-charcoal-500 mb-3">Partner data or another unit\'s data</p>
-            <div className="space-y-2">
-              {lookingIntoOptions.map((opt) => (
-                <button
-                  key={opt.id}
-                  onClick={() => {
-                    setLookingInto(opt.id)
-                    setRevealed(false)
-                  }}
-                  className={`w-full text-left rounded-lg border px-3 py-2 transition ${
-                    lookingInto === opt.id
-                      ? 'border-gold-400 bg-gold-50 ring-1 ring-gold-200'
-                      : 'border-charcoal-100 bg-white hover:border-gold-200'
-                  }`}
-                >
-                  <p className="text-sm font-medium text-charcoal-900">{opt.label}</p>
-                  <p className="text-xs text-charcoal-500">{opt.desc}</p>
-                </button>
-              ))}
-            </div>
-          </div>
+      <div className="card flex flex-col items-stretch gap-6 md:flex-row md:items-center md:justify-center">
+        <div className="flex-1 space-y-2">
+          <label className="text-xs font-semibold uppercase tracking-wider text-charcoal-500">
+            Looking from
+          </label>
+          <select
+            className="input"
+            value={lookingFrom}
+            onChange={(e) => {
+              setLookingFrom(e.target.value)
+              setRevealed(false)
+            }}
+          >
+            {teams.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <div className="mt-6 flex justify-center">
-          <button onClick={look} disabled={loading} className="btn-primary px-8">
+        <div className="flex flex-col items-center justify-center px-4">
+          <PeriscopeIcon className="h-20 w-20 text-gold-500" />
+          <button type="button" className="btn-primary mt-3" onClick={look} disabled={loading}>
             {loading ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Looking through the Periscope\u2026
+                <Loader2 className="h-4 w-4 animate-spin" /> Looking…
               </>
             ) : (
               <>
-                <Sparkles className="h-4 w-4" />
-                Look through the Periscope
+                <Sparkles className="h-4 w-4" /> Look through
               </>
             )}
           </button>
         </div>
+
+        <div className="flex-1 space-y-2">
+          <label className="text-xs font-semibold uppercase tracking-wider text-charcoal-500">
+            Looking into
+          </label>
+          <select
+            className="input"
+            value={lookingInto}
+            onChange={(e) => {
+              setLookingInto(e.target.value)
+              setRevealed(false)
+            }}
+          >
+            {teams.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      {revealed && view && (
-        <div className="space-y-4">
-          <div className="card border-gold-200 bg-gold-50/50">
-            <p className="text-xs uppercase tracking-widest text-gold-700 mb-1">
-              {lookingFrom} looking into{' '}
-              {lookingIntoOptions.find((o) => o.id === lookingInto)?.label}
-            </p>
-            <p className="font-display text-lg font-semibold text-charcoal-900">{view.headline}</p>
-          </div>
+      {revealed && (
+        <div className="card space-y-4">
+          <h2 className="font-display text-lg font-semibold text-charcoal-900">
+            Visible via established hooks
+          </h2>
+          <p className="text-sm text-charcoal-600">
+            <span className="font-medium text-charcoal-800">{lookingFrom}</span> looking into{' '}
+            <span className="font-medium text-charcoal-800">{lookingInto}</span>
+          </p>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="card">
-              <h3 className="font-display font-semibold text-charcoal-900 mb-3">Visible signals</h3>
-              <ul className="space-y-2 text-sm text-charcoal-700">
-                {view.signals.map((s) => (
-                  <li key={s} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400" />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="card">
-              <h3 className="font-display font-semibold text-charcoal-900 mb-3">
-                Gaps that cannot be seen otherwise
-              </h3>
-              <ul className="space-y-2 text-sm text-charcoal-700">
-                {view.gaps.map((g) => (
-                  <li key={g} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-charcoal-400" />
-                    {g}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {lookingFrom === lookingInto ? (
+            <p className="text-sm text-charcoal-500">
+              Choose a different BU to look into — hooks expose another unit's published
+              step data.
+            </p>
+          ) : visible.length === 0 ? (
+            <p className="rounded-lg border border-dashed border-charcoal-200 bg-cream-50 p-4 text-sm text-charcoal-500">
+              No active published hooks from {lookingInto} for {lookingFrom} yet. In Depth,
+              add a hook on a step, connect, approve, and publish.
+            </p>
+          ) : (
+            <ul className="space-y-3">
+              {visible.map((v) => (
+                <li
+                  key={v.hook}
+                  className="rounded-xl border border-gold-200 bg-gold-50/50 p-4"
+                >
+                  <div className="flex items-center gap-2 text-sm font-semibold text-charcoal-900">
+                    <Anchor className="h-4 w-4 text-gold-700" />
+                    {v.hook}
+                    <span className="font-normal text-charcoal-500">· step: {v.step}</span>
+                  </div>
+                  <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+                    {Object.entries(v.info).map(([k, val]) => (
+                      <div key={k} className="rounded-lg bg-white/80 px-3 py-2 text-sm">
+                        <dt className="text-[10px] uppercase tracking-wide text-charcoal-400">
+                          {k}
+                        </dt>
+                        <dd className="font-medium text-charcoal-800">{String(val)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       )}
     </div>
