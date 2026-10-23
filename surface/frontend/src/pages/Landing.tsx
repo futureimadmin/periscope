@@ -15,7 +15,7 @@ const benefits = [
     icon: Eye,
     title: 'See Data That Cannot Be Seen Otherwise',
     description:
-      'One business unit can look through the Periscope and gain visibility into Partner data and other business units\' data — information that is normally locked behind silos.',
+      "One business unit can look through the Periscope and gain visibility into Partner data and other business units' data — information that is normally locked behind silos.",
   },
   {
     icon: Database,
@@ -51,7 +51,7 @@ const benefits = [
 ]
 
 export default function Landing() {
-  return sn (
+  return (
     <div className="min-h-screen bg-cream-50">
       <header className="border-b border-charcoal-100 bg-white/90 backdrop-blur sticky top-0 z-50">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
@@ -81,7 +81,7 @@ export default function Landing() {
           </h1>
           <p className="mt-6 text-lg text-charcoal-600 max-w-2xl mx-auto leading-relaxed">
             Surface Edition brings visibility: any business unit can look through the Periscope
-            into Partner data and other business units\' data — information that is normally
+            into Partner data and other business units' data — information that is normally
             invisible due to organisational silos. Depth Edition holds the submerged operating
             model (Framework Builder) for how partnerships are formalised.
           </p>
@@ -105,7 +105,7 @@ export default function Landing() {
             </h2>
             <p className="mt-3 text-charcoal-600 max-w-xl mx-auto">
               Designed so that one team can look through the Periscope and finally see
-              Partner data and other business units\' data that was previously out of reach.
+              Partner data and other business units' data that was previously out of reach.
             </p>
           </div>
 
@@ -155,7 +155,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <footer className="border-t border-charcoal-100 py-8 text-center text-sm text-char-charcoal-500">
+      <footer className="border-t border-charcoal-100 py-8 text-center text-sm text-charcoal-500">
         Periscope · Surface Edition · Depth Edition (submerged structure) · intelligentmachines
       </footer>
     </div>
