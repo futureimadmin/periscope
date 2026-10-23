@@ -1,7 +1,7 @@
-# Depth backend — Framework Builder + custom Python FSM
+# Depth backend — Framework Builder (Steps + Hooks)
 
 Lightweight **Python** Cloud Function backend for Depth Edition.
-No Spring. Custom finite state machine for partnership stages.
+No Spring. Per-BU frameworks with doubly linked steps and cross-BU hooks.
 
 ## Layout
 
@@ -9,33 +9,38 @@ No Spring. Custom finite state machine for partnership stages.
 depth/backend/
 ├── main.py              # HTTP entrypoint (periscope_api)
 ├── requirements.txt
-├── ai/                  # Gemini (ADC)
+├── ai/
+│   └── gemini_service.py   # Gemini assist (ADC)
 └── workflow/
-    ├── models.py        # Framework, Stage, RACI, PartnershipRun
-    ├── fsm.py           # PartnershipFSM + guards
-    └── store.py         # In-memory store (swap for Firestore later)
+    ├── models.py        # Framework, Step, Hook, HookConnection
+    ├── fsm.py           # prev/next step traversal helpers
+    └── store.py         # In-memory store (Firestore-ready)
 ```
 
-## Stage spine
+## Model
 
-`discovery → negotiation → formalization → activation → value_realization → renewal`
-
-Rework edges: activation → formalization; renewal → negotiation.
+```
+Framework (owned by BU)
+  └── Step ↔ Step ↔ Step   (doubly linked)
+        └── Hook[]
+              └── HookConnection (requested → approved → active)
+                    └── published_info → visible on Surface
+```
 
 ## APIs
 
 | Method | Path | Purpose |
 |--------|------|---------|
 | GET | `/health` | Service health |
-| GET/POST | `/frameworks` | List / create frameworks |
+| GET/POST | `/frameworks` | List / create (query `?bu=`) |
 | POST | `/frameworks/{id}/publish` | Publish draft |
-| POST | `/frameworks/{id}/stages` | Update stage (draft only) |
-| POST | `/frameworks/assist-stage` | Gemini stage assist |
-| POST | `/frameworks/validate` | Validate framework |
-| POST | `/partnerships/recommend-framework` | Gemini recommend |
-| GET/POST | `/runs` | List / start partnership run |
-| POST | `/runs/{id}/advance` | Next stage |
-| POST | `/runs/{id}/transition` | Explicit `to_stage` |
+| POST | `/frameworks/{id}/steps` | Add step |
+| POST | `/frameworks/{id}/steps/{stepId}/hooks` | Add hook |
+| POST | `/hooks/connect` | Request hook connection |
+| POST | `/hooks/connections/{id}/approve` | Approve |
+| POST | `/hooks/connections/{id}/publish` | Publish info payload |
+| GET | `/hooks/connections` | List connections |
+| GET | `/surface/visibility?looking_from=` | Feed for Surface Looking into |
 
 ## Local run
 
