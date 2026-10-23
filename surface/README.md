@@ -1,14 +1,24 @@
 # Periscope — Surface Edition
 
-Visibility only: Looking from / Looking into Partner and cross-BU data.
+**Visibility layer.** Looking from / Looking into partner and other-BU data that cannot be seen otherwise.
 
-## Structure
+## What Surface does
 
-- `frontend/` — React app (Command Centre, Periscope View, Collaboration, Partnerships, Insights)
-- `backend/` — Cloud Functions for `/insights/*` (health, cross-team, opportunities)
+- Command Centre
+- Periscope View (Looking from / Looking into)
+- Collaboration Spaces, Partnerships, Insights
+- Consumes **published hook data** established in Depth Edition
 
-Framework Builder is **not** in Surface; it lives in `../depth/` (Depth Edition — submerged structure).
+## What Surface does **not** do
+
+- Framework Builder (Depth only)
+- Defining steps or hooks (Depth only)
+
+## Run
 
 ```bash
-cd frontend && npm install && npm run dev
+cd surface/frontend && npm i && npm run dev
+cd surface/backend && functions-framework --target=periscope_api --debug
 ```
+
+GCP project: `intelligentmachines`

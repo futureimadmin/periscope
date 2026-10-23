@@ -1,14 +1,20 @@
 # Periscope — Depth Edition
 
-Submerged operating model: Framework Builder and formal partnership structure.
+**Submerged operating model.** Framework Builder for each BU: steps (doubly linked), hooks for cross-BU info requests.
 
-## Structure
+## What Depth does
 
-- `frontend/` — React app (Framework Builder primary, Partnerships, Operating Overview)
-- `backend/` — Cloud Functions for `/partnerships/recommend-framework`, `/frameworks/*`
+- Framework Builder (per-BU)
+- Add steps (doubly linked list)
+- Add hooks on steps
+- Hook connections: request → approve → publish
+- Published info becomes visible on Surface
 
-Surface visibility (Looking from / Looking into) lives in `../surface/`.
+## Run
 
 ```bash
-cd frontend && npm install && npm run dev
+cd depth/frontend && npm i && npm run dev
+cd depth/backend && functions-framework --target=periscope_api --debug
 ```
+
+GCP project: `intelligentmachines`
