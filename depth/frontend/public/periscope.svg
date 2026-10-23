@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Periscope">
+  <defs>
+    <clipPath id="pBadge"><circle cx="64" cy="64" r="60"/></clipPath>
+    <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFDF0"/>
+      <stop offset="1" stop-color="#FFF3C4"/>
+    </linearGradient>
+    <linearGradient id="pWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5BC8F0" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#0E5FA8" stop-opacity=".62"/>
+    </linearGradient>
+    <linearGradient id="pLens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7FD3FF"/>
+      <stop offset="1" stop-color="#0A2A66"/>
+    </linearGradient>
+    <linearGradient id="pHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFE94A"/>
+      <stop offset="1" stop-color="#C98F00"/>
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="64" r="60" fill="url(#pSky)"/>
+  <g clip-path="url(#pBadge)">
+    <g stroke-linecap="butt" stroke-linejoin="round" fill="none">
+      <path d="M50 132V46Q50 31 65 31H82" stroke="#6B4A00" stroke-width="24"/>
+      <path d="M50 132V46Q50 31 65 31H82" stroke="#FFCE00" stroke-width="14"/>
+    </g>
+    <rect x="78" y="19" width="17" height="24" rx="4" fill="url(#pHead)" stroke="#6B4A00" stroke-width="2.4"/>
+    <ellipse cx="96" cy="31" rx="5" ry="10" fill="url(#pLens)"/>
+    <path d="M-4 81Q8 76 20 81T44 81T68 81T92 81T116 81T140 81V132H-4Z" fill="url(#pWater)"/>
+  </g>
+  <circle cx="64" cy="64" r="59" fill="none" stroke="#E0A800" stroke-width="2.4"/>
+</svg>
